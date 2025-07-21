@@ -50,11 +50,6 @@ export default async function RootLayout({
       // data-thmee="light"
       // suppressHydrationWarning
     >
-      <PlausibleProvider
-        domain="ecommerce.mandala.sh"
-        selfHosted={true}
-        customDomain="plausible.pimento.cloud"
-      />
       <head>
         {/* <InitTheme /> */}
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
@@ -63,6 +58,11 @@ export default async function RootLayout({
       <body className="max-w-screen overflow-x-clip">
         <ViewTransition>
           <Providers>
+            <PlausibleProvider
+              domain="ecommerce.mandala.sh"
+              selfHosted={true}
+              customDomain="plausible.pimento.cloud"
+            />
             <NextIntlClientProvider locale={locale} messages={messages}>
               {/* <AdminBar
               adminBarProps={{
