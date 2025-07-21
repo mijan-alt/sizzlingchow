@@ -1,5 +1,6 @@
 import { withPayload } from "@payloadcms/next/withPayload";
 import createNextIntlPlugin from "next-intl/plugin";
+import { withPlausibleProxy } from "next-plausible";
 
 import redirects from "./redirects.js";
 
@@ -32,4 +33,6 @@ const nextConfig = {
   },
 };
 
-export default withNextIntl(withPayload(nextConfig));
+export default withPlausibleProxy({ customDomain: process.env.ANALYTICS_URL })(
+  withNextIntl(withPayload(nextConfig)),
+);
