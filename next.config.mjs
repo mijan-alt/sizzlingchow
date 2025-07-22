@@ -33,6 +33,6 @@ const nextConfig = {
   },
 };
 
-export default withPlausibleProxy({ customDomain: process.env.ANALYTICS_URL })(
+export default withPlausibleProxy({ customDomain: "https://plausible.pimento.cloud" })(
   withNextIntl(withPayload(nextConfig)),
 );
