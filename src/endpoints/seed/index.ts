@@ -5453,6 +5453,25 @@ async function seedProducts(payload: Payload) {
     _status: "published",
   };
 
+  try {
+    const productRecord = (await payload.db.create({
+      collection: "products",
+      data: luxurySportShoes,
+    })) as { id: string };
+
+    await payload.update({
+      collection: "products",
+      id: productRecord.id,
+      data: {
+        slug: luxurySportShoes.slug,
+      },
+    });
+
+    console.log(`✅ Created product: ${luxurySportShoes.title.en}`);
+  } catch (error) {
+    console.log(`ℹ️ Product ${luxurySportShoes.title.en} already exists or creation failed: ${error}`);
+  }
+
   // Flip flops
 
   const flipFlopsSubcategory = (
