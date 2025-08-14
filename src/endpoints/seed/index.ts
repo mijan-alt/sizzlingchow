@@ -127,8 +127,10 @@ async function seedCategories(payload: Payload) {
     },
   ];
 
-  for (const category of categories) {
+  // Twórz wszystkie kategorie równolegle
+  const categoryPromises = categories.map(async (category) => {
     try {
+      // Utwórz kategorię w języku angielskim
       const createdCategory = await payload.create({
         collection: "productCategories",
         locale: "en",
@@ -138,6 +140,7 @@ async function seedCategories(payload: Payload) {
         },
       });
 
+      // Zaktualizuj kategorię w języku polskim
       await payload.update({
         collection: "productCategories",
         locale: "pl",
@@ -149,33 +152,49 @@ async function seedCategories(payload: Payload) {
 
       console.log(`✅ Created category: ${category.title.en}`);
 
-      // Create subcategories
-      for (const subcategory of category.subcategories) {
-        await payload.create({
-          collection: "productSubCategories",
-          locale: "en",
-          data: {
-            slug: subcategory.slug,
-            title: subcategory.title.en,
-            category: createdCategory.id,
-          },
-        });
+      // Twórz podkategorie równolegle
+      const subcategoryPromises = category.subcategories.map(async (subcategory) => {
+        try {
+          // Utwórz podkategorię w języku angielskim
+          const createdSubcategory = await payload.create({
+            collection: "productSubCategories",
+            locale: "en",
+            data: {
+              slug: subcategory.slug,
+              title: subcategory.title.en,
+              category: createdCategory.id,
+            },
+          });
 
-        await payload.update({
-          collection: "productSubCategories",
-          locale: "pl",
-          id: createdCategory.id,
-          data: {
-            title: subcategory.title.pl,
-          },
-        });
-      }
+          // Zaktualizuj podkategorię w języku polskim
+          await payload.update({
+            collection: "productSubCategories",
+            locale: "pl",
+            id: createdSubcategory.id, // Używaj ID subcategorii, nie kategorii!
+            data: {
+              title: subcategory.title.pl,
+            },
+          });
+
+          console.log(`  ✅ Created subcategory: ${subcategory.title.en}`);
+          return createdSubcategory;
+        } catch (error) {
+          console.log(`  ℹ️ Subcategory ${subcategory.title.en} already exists or creation failed: ${error}`);
+          return null;
+        }
+      });
+
+      await Promise.all(subcategoryPromises);
+      return createdCategory;
     } catch (error) {
       console.log(`ℹ️ Category ${category.title.en} already exists or creation failed: ${error}`);
+      return null;
     }
-  }
-}
+  });
 
+  await Promise.all(categoryPromises);
+  console.log("📂 Finished creating categories and subcategories");
+}
 async function seedFulfilment(payload: Payload) {
   console.log("📦 Filling fulfilment data...");
   try {
@@ -214,6 +233,9 @@ async function seedShopSettings(payload: Payload) {
           { currency: "EUR", value: 0.23 },
           { currency: "PLN", value: 4.03 },
         ],
+      },
+      context: {
+        disableRevalidate: true,
       },
     });
     console.log("✅ Shop settings created");
@@ -255,6 +277,9 @@ async function seedShopLayout(payload: Payload) {
           },
         },
       },
+      context: {
+        disableRevalidate: true,
+      },
     });
 
     await payload.updateGlobal({
@@ -272,6 +297,9 @@ async function seedShopLayout(payload: Payload) {
             title: "Potrzebujesz pomocy?",
           },
         },
+      },
+      context: {
+        disableRevalidate: true,
       },
     });
 
@@ -302,6 +330,9 @@ async function seedHeaderFooter(payload: Payload) {
           },
         ],
       },
+      context: {
+        disableRevalidate: true,
+      },
     });
 
     await payload.updateGlobal({
@@ -317,6 +348,9 @@ async function seedHeaderFooter(payload: Payload) {
             },
           },
         ],
+      },
+      context: {
+        disableRevalidate: true,
       },
     });
 
@@ -1808,13 +1842,6 @@ async function seedProducts(payload: Payload) {
         currency: "USD",
       },
     ],
-    createdAt: {
-      $date: "2025-01-14T06:12:18.867Z",
-    },
-    updatedAt: {
-      $date: "2025-07-22T15:36:38.751Z",
-    },
-
     bought: 2,
     variantsType: "sizes",
     description: {
@@ -2262,7 +2289,7 @@ async function seedProducts(payload: Payload) {
       collection: "productSubCategories",
       where: {
         slug: {
-          equals: "luxury-shoes",
+          equals: "elegant-shoes",
         },
       },
     })
@@ -2947,13 +2974,6 @@ async function seedProducts(payload: Payload) {
         currency: "PLN",
       },
     ],
-    createdAt: {
-      $date: "2025-01-14T07:03:17.250Z",
-    },
-    updatedAt: {
-      $date: "2025-08-09T15:15:10.000Z",
-    },
-    __v: 0,
     enableVariants: true,
     variantsType: "sizes",
     bought: 1,
@@ -4377,13 +4397,6 @@ async function seedProducts(payload: Payload) {
         currency: "PLN",
       },
     ],
-    createdAt: {
-      $date: "2025-01-14T13:50:29.565Z",
-    },
-    updatedAt: {
-      $date: "2025-07-22T15:47:46.079Z",
-    },
-    __v: 0,
     variantsType: "colorsAndSizes",
     bought: 1,
     _status: "published",
@@ -5443,13 +5456,6 @@ async function seedProducts(payload: Payload) {
       },
     ],
     bought: 1,
-    createdAt: {
-      $date: "2025-01-15T07:53:50.427Z",
-    },
-    updatedAt: {
-      $date: "2025-08-14T07:41:22.265Z",
-    },
-    __v: 0,
     _status: "published",
   };
 
@@ -7070,6 +7076,125 @@ async function seedPages(payload: Payload) {
         background: "",
 
         blockName: "Layout text",
+      },
+      {
+        blockType: "content",
+        columns: [
+          {
+            size: "full",
+            richText: {
+              en: {
+                root: {
+                  children: [
+                    {
+                      type: "horizontalrule",
+                      version: 1,
+                    },
+                    {
+                      children: [
+                        {
+                          detail: 0,
+                          format: 0,
+                          mode: "normal",
+                          style: "",
+                          text: "Looking for a specialist to build your store?",
+                          type: "text",
+                          version: 1,
+                        },
+                      ],
+                      direction: "ltr",
+                      format: "",
+                      indent: 0,
+                      type: "heading",
+                      version: 1,
+                      tag: "h2",
+                    },
+                    {
+                      children: [
+                        {
+                          detail: 0,
+                          format: 0,
+                          mode: "normal",
+                          style: "",
+                          text: "Contact us at ",
+                          type: "text",
+                          version: 1,
+                        },
+                        {
+                          type: "autolink",
+                          children: [
+                            {
+                              detail: 0,
+                              format: 0,
+                              mode: "normal",
+                              style: "",
+                              text: "hello@mandala.sh",
+                              type: "text",
+                              version: 1,
+                            },
+                          ],
+                          direction: "ltr",
+                          fields: {
+                            linkType: "custom",
+                            url: "mailto:hello@mandala.sh",
+                          },
+                          format: "",
+                          indent: 0,
+                          version: 2,
+                        },
+                        {
+                          detail: 0,
+                          format: 0,
+                          mode: "normal",
+                          style: "",
+                          text: " and tell us more about your project!",
+                          type: "text",
+                          version: 1,
+                        },
+                      ],
+                      direction: "ltr",
+                      format: "",
+                      indent: 0,
+                      type: "paragraph",
+                      version: 1,
+                      textFormat: 0,
+                      textStyle: "",
+                    },
+                    {
+                      type: "horizontalrule",
+                      version: 1,
+                    },
+                  ],
+                  direction: "ltr",
+                  format: "",
+                  indent: 0,
+                  type: "root",
+                  version: 1,
+                },
+              },
+            },
+            enableProse: true,
+            paddingBottom: null,
+            paddingTop: null,
+            link: {
+              type: "reference",
+              appearance: "default",
+            },
+            background: "",
+          },
+        ],
+        alignment: "center",
+        spacingBottom: "none",
+        spacingTop: "none",
+        paddingBottom: "medium",
+        paddingTop: "medium",
+        radius: false,
+        specifiedRadius: false,
+        radiusAll: "rounded-none",
+        radiusTopLeft: "rounded-tl-none",
+        radiusTopRight: "rounded-tr-none",
+        radiusBottomLeft: "rounded-bl-none",
+        radiusBottomRight: "rounded-br-none",
       },
       {
         blockType: "hotspotZone",
