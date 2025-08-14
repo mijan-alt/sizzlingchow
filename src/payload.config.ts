@@ -35,8 +35,6 @@ import { Header } from "./globals/Header/config";
 import { plugins } from "./plugins";
 import { getServerSideURL } from "./utilities/getURL";
 
-// import 'payloadcms-lexical-ext/client/client.css'
-
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
@@ -54,6 +52,7 @@ export default buildConfig({
       Nav: {
         path: "@/components/AdminNavbar#AdminNavbar",
       },
+      beforeDashboard: ["@/components/BeforeDashboard#BeforeDashboard"],
       views: {
         dashboard: {
           Component: "@/components/(ecommerce)/AdminDashboard#AdminDashboard",

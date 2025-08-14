@@ -6,7 +6,8 @@ import { GeistSans } from "geist/font/sans";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
-import React, { type ReactNode, unstable_ViewTransition as ViewTransition } from "react";
+import PlausibleProvider from "next-plausible";
+import { type ReactNode, unstable_ViewTransition as ViewTransition } from "react";
 
 import "../globals.css";
 // import { LivePreviewListener } from "@/components/LivePreviewListener";
@@ -57,6 +58,11 @@ export default async function RootLayout({
       <body className="max-w-screen overflow-x-clip">
         <ViewTransition>
           <Providers>
+            <PlausibleProvider
+              domain="ecommerce.mandala.sh"
+              selfHosted={true}
+              customDomain="plausible.pimento.cloud"
+            />
             <NextIntlClientProvider locale={locale} messages={messages}>
               {/* <AdminBar
               adminBarProps={{
