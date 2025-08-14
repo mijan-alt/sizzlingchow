@@ -52,6 +52,7 @@ export default buildConfig({
       Nav: {
         path: "@/components/AdminNavbar#AdminNavbar",
       },
+      beforeDashboard: ["@/components/BeforeDashboard#BeforeDashboard"],
       views: {
         dashboard: {
           Component: "@/components/(ecommerce)/AdminDashboard#AdminDashboard",

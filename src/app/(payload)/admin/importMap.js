@@ -58,6 +58,7 @@ import { AdminNavbar as AdminNavbar_967b713f8b884906a229587bbbb38a9a } from '@/c
 import { AdminLogoIcon as AdminLogoIcon_b44db66c75684c15f88e108165ed4089 } from '@/components/AdminLogoIcon/AdminLogoIcon'
 import { AdminLogoBig as AdminLogoBig_06da07c1f0ebe9eb350437b211008391 } from '@/components/AdminLogoBig/AdminLogoBig'
 import { AdminResetPassword as AdminResetPassword_f8d611a17c80018cb52bc9ecc1bbddd2 } from '@/components/AdminResetPassword'
+import { BeforeDashboard as BeforeDashboard_1a7510af427896d367a49dbf838d2de6 } from '@/components/BeforeDashboard'
 import { AdminDashboardNavLink as AdminDashboardNavLink_18419da7f6f55f332ebe4f081849b00b } from '@/components/(ecommerce)/AdminDashboardNavLink'
 import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
 import { AdminDashboard as AdminDashboard_5728d9308044ad41218b388eed983c05 } from '@/components/(ecommerce)/AdminDashboard'
@@ -123,6 +124,7 @@ export const importMap = {
   "@/components/AdminLogoIcon/AdminLogoIcon#AdminLogoIcon": AdminLogoIcon_b44db66c75684c15f88e108165ed4089,
   "@/components/AdminLogoBig/AdminLogoBig#AdminLogoBig": AdminLogoBig_06da07c1f0ebe9eb350437b211008391,
   "@/components/AdminResetPassword#AdminResetPassword": AdminResetPassword_f8d611a17c80018cb52bc9ecc1bbddd2,
+  "@/components/BeforeDashboard#BeforeDashboard": BeforeDashboard_1a7510af427896d367a49dbf838d2de6,
   "@/components/(ecommerce)/AdminDashboardNavLink#AdminDashboardNavLink": AdminDashboardNavLink_18419da7f6f55f332ebe4f081849b00b,
   "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24,
   "@/components/(ecommerce)/AdminDashboard#AdminDashboard": AdminDashboard_5728d9308044ad41218b388eed983c05
