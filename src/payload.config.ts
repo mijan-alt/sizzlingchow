@@ -2,7 +2,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
-import { s3Storage } from "@payloadcms/storage-s3";
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
+// import { s3Storage } from "@payloadcms/storage-s3";
 import { buildConfig } from "payload";
 import { en } from "payload/i18n/en";
 import { pl } from "payload/i18n/pl";
@@ -34,6 +35,8 @@ import { Footer } from "./globals/Footer/config";
 import { Header } from "./globals/Header/config";
 import { plugins } from "./plugins";
 import { getServerSideURL } from "./utilities/getURL";
+
+
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -140,21 +143,32 @@ export default buildConfig({
   ],
   plugins: [
     ...plugins,
-    s3Storage({
+    // s3Storage({
+    //   collections: {
+    //     [Media.slug]: true,
+    //   },
+    //   bucket: process.env.S3_BUCKET ?? "",
+    //   config: {
+    //     endpoint: process.env.S3_ENDPOINT ?? "",
+    //     region: "auto",
+    //     credentials: {
+    //       accessKeyId: process.env.S3_ACCESS_KEY_ID ?? "",
+    //       secretAccessKey: process.env.S3_SECRET_ACCESS_KEY ?? "",
+    //     },
+    //     requestChecksumCalculation: "WHEN_REQUIRED",
+    //     responseChecksumValidation: "WHEN_REQUIRED",
+    //   },
+
+      
+    // }),
+     vercelBlobStorage({
+      enabled: true, // Optional, defaults to true
+      // Specify which collections should use Vercel Blob
       collections: {
-        [Media.slug]: true,
+        media: true,
       },
-      bucket: process.env.S3_BUCKET ?? "",
-      config: {
-        endpoint: process.env.S3_ENDPOINT ?? "",
-        region: "auto",
-        credentials: {
-          accessKeyId: process.env.S3_ACCESS_KEY_ID ?? "",
-          secretAccessKey: process.env.S3_SECRET_ACCESS_KEY ?? "",
-        },
-        requestChecksumCalculation: "WHEN_REQUIRED",
-        responseChecksumValidation: "WHEN_REQUIRED",
-      },
+      // Token provided by Vercel once Blob storage is added to your Vercel project
+      token: process.env.BLOB_READ_WRITE_TOKEN,
     }),
   ],
   secret: process.env.PAYLOAD_SECRET,
