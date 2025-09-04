@@ -60,7 +60,7 @@ import { AdminLogoBig as AdminLogoBig_06da07c1f0ebe9eb350437b211008391 } from '@
 import { AdminResetPassword as AdminResetPassword_f8d611a17c80018cb52bc9ecc1bbddd2 } from '@/components/AdminResetPassword'
 import { BeforeDashboard as BeforeDashboard_1a7510af427896d367a49dbf838d2de6 } from '@/components/BeforeDashboard'
 import { AdminDashboardNavLink as AdminDashboardNavLink_18419da7f6f55f332ebe4f081849b00b } from '@/components/(ecommerce)/AdminDashboardNavLink'
-import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
+import { VercelBlobClientUploadHandler as VercelBlobClientUploadHandler_16c82c5e25f430251a3e3ba57219ff4e } from '@payloadcms/storage-vercel-blob/client'
 import { AdminDashboard as AdminDashboard_5728d9308044ad41218b388eed983c05 } from '@/components/(ecommerce)/AdminDashboard'
 
 export const importMap = {
@@ -126,6 +126,6 @@ export const importMap = {
   "@/components/AdminResetPassword#AdminResetPassword": AdminResetPassword_f8d611a17c80018cb52bc9ecc1bbddd2,
   "@/components/BeforeDashboard#BeforeDashboard": BeforeDashboard_1a7510af427896d367a49dbf838d2de6,
   "@/components/(ecommerce)/AdminDashboardNavLink#AdminDashboardNavLink": AdminDashboardNavLink_18419da7f6f55f332ebe4f081849b00b,
-  "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24,
+  "@payloadcms/storage-vercel-blob/client#VercelBlobClientUploadHandler": VercelBlobClientUploadHandler_16c82c5e25f430251a3e3ba57219ff4e,
   "@/components/(ecommerce)/AdminDashboard#AdminDashboard": AdminDashboard_5728d9308044ad41218b388eed983c05
 }
