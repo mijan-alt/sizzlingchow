@@ -48,6 +48,13 @@ export const Paywalls: GlobalConfig = {
           },
           value: "p24",
         },
+        {
+          label: {
+            en: "Paystack",
+            pl: "Paystack",
+          },
+          value: "paystack",
+        },
       ],
       defaultValue: "stripe",
       required: true,
@@ -166,7 +173,6 @@ export const Paywalls: GlobalConfig = {
           },
           access: {
             read: authenticated,
-
             create: authenticated,
             update: authenticated,
           },
@@ -229,7 +235,6 @@ export const Paywalls: GlobalConfig = {
           access: {
             read: authenticated,
             create: authenticated,
-
             update: authenticated,
           },
           required: true,
@@ -240,6 +245,67 @@ export const Paywalls: GlobalConfig = {
           label: {
             en: "Endpoint",
             pl: "Endpoint",
+          },
+          access: {
+            read: authenticated,
+            create: authenticated,
+            update: authenticated,
+          },
+          required: true,
+        },
+      ],
+    },
+    {
+      name: "paystack",
+      label: {
+        en: "Paystack configuration",
+        pl: "Konfiguracja Paystack",
+      },
+      type: "group",
+      admin: {
+        condition: (data) => {
+          return data.paywall === "paystack";
+        },
+        description: {
+          pl: "Jeśli chcesz korzystać ze środowiska testowego, podaj tu odpowiadające klucze.",
+          en: "If you want to use test environment, you can also provide test keys here.",
+        },
+      },
+      fields: [
+        {
+          name: "publicKey",
+          type: "text",
+          label: {
+            en: "Public Key",
+            pl: "Klucz publiczny",
+          },
+          access: {
+            read: authenticated,
+            create: authenticated,
+            update: authenticated,
+          },
+          required: true,
+        },
+        {
+          name: "secretKey",
+          type: "text",
+          label: {
+            en: "Secret Key",
+            pl: "Klucz prywatny",
+          },
+          access: {
+            read: authenticated,
+            create: authenticated,
+            update: authenticated,
+          },
+          required: true,
+        },
+        {
+          name: "webhookSecret",
+          type: "text",
+          label: {
+            en: "Webhook Secret",
+            pl: "Sekret Webhook",
           },
           access: {
             read: authenticated,

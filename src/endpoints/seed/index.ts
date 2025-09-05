@@ -227,11 +227,12 @@ async function seedShopSettings(payload: Payload) {
       slug: "shopSettings",
       data: {
         enableOAuth: false,
-        availableCurrencies: ["USD", "EUR", "PLN"],
+        availableCurrencies: ["USD", "EUR", "PLN", "NGN"],
         currencyValues: [
           { currency: "USD", value: 0.25 },
           { currency: "EUR", value: 0.23 },
           { currency: "PLN", value: 4.03 },
+          { currency: "NGN", value: 0.1 },
         ],
       },
       context: {

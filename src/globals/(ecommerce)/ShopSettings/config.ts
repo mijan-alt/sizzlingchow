@@ -27,6 +27,7 @@ export const ShopSettings: GlobalConfig = {
         pl: "Dostępne waluty",
       },
       options: [
+        { value: "NGN", label: "NGN" },
         { value: "USD", label: "USD" },
         { value: "EUR", label: "EUR" },
         { value: "GBP", label: "GBP" },

@@ -979,4 +979,8 @@ export const countryOptions = [
     label: "Zimbabwe",
     value: "ZW",
   },
+  {
+    label: "Nigeria",
+    value: "NG",
+  },
 ];

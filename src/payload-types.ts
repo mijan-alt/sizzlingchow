@@ -1262,7 +1262,8 @@ export interface Customer {
           | 'sk'
           | 'sm'
           | 'ua'
-          | 'va';
+          | 'va'
+          | 'ng';
         region: string;
         postalCode: string;
         phone: string;
@@ -1391,6 +1392,7 @@ export interface Order {
           | 'sm'
           | 'ua'
           | 'va'
+          | 'ng'
         )
       | null;
     region?: string | null;
@@ -1455,7 +1457,8 @@ export interface Order {
       | 'sk'
       | 'sm'
       | 'ua'
-      | 'va';
+      | 'va'
+      | 'ng';
     region: string;
     postalCode: string;
     email: string;
@@ -2792,7 +2795,7 @@ export interface ShopSetting {
   /**
    * First currency is the default one
    */
-  availableCurrencies: ('USD' | 'EUR' | 'GBP' | 'PLN')[];
+  availableCurrencies: ('NGN' | 'USD' | 'EUR' | 'GBP' | 'PLN')[];
   currencyValues?:
     | {
         currency: string;
@@ -2909,6 +2912,7 @@ export interface InpostPickup {
           | 'sm'
           | 'ua'
           | 'va'
+          | 'ng'
         )[];
         freeShipping?:
           | {
@@ -3005,6 +3009,7 @@ export interface InpostCourier {
           | 'sm'
           | 'ua'
           | 'va'
+          | 'ng'
         )[];
         freeShipping?:
           | {
@@ -3100,6 +3105,7 @@ export interface InpostCourierCod {
           | 'sm'
           | 'ua'
           | 'va'
+          | 'ng'
         )[];
         freeShipping?:
           | {
@@ -3139,7 +3145,7 @@ export interface InpostCourierCod {
  */
 export interface Paywall {
   id: string;
-  paywall: 'stripe' | 'autopay' | 'p24';
+  paywall: 'stripe' | 'autopay' | 'p24' | 'paystack';
   /**
    * If you want to use test environment, you can also provide test keys here.
    */
@@ -3164,6 +3170,14 @@ export interface Paywall {
     crc: string;
     secretId: string;
     endpoint: string;
+  };
+  /**
+   * If you want to use test environment, you can also provide test keys here.
+   */
+  paystack?: {
+    publicKey: string;
+    secretKey: string;
+    webhookSecret: string;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -3223,7 +3237,8 @@ export interface Fulfilment {
       | 'sk'
       | 'sm'
       | 'ua'
-      | 'va';
+      | 'va'
+      | 'ng';
     region: string;
     postalCode: string;
     email: string;
@@ -3537,6 +3552,13 @@ export interface PaywallsSelect<T extends boolean = true> {
         crc?: T;
         secretId?: T;
         endpoint?: T;
+      };
+  paystack?:
+    | T
+    | {
+        publicKey?: T;
+        secretKey?: T;
+        webhookSecret?: T;
       };
   updatedAt?: T;
   createdAt?: T;

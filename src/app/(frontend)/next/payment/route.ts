@@ -7,6 +7,7 @@ import { getTotal } from "@/lib/getTotal";
 import { getTotalWeight } from "@/lib/getTotalWeight";
 import { getAutopayPaymentURL } from "@/lib/paywalls/getAutopayPaymentURL";
 import { getP24PaymentURL } from "@/lib/paywalls/getP24PaymentURL";
+import { getPaystackPaymentURL } from "@/lib/paywalls/getPayStackPaymentUrl";
 import { getStripePaymentURL } from "@/lib/paywalls/getStripePaymentURL";
 import { type CheckoutFormData } from "@/schemas/checkoutForm.schema";
 import { type Cart } from "@/stores/CartStore/types";
@@ -14,6 +15,7 @@ import { type Currency } from "@/stores/Currency/types";
 import { getCustomer } from "@/utilities/getCustomer";
 import { getCachedGlobal } from "@/utilities/getGlobals";
 import config from "@payload-config";
+
 
 const createCouriers = async (locale: Locale) => {
   const couriersModule = await import("@/globals/(ecommerce)/Couriers/utils/couriersConfig");
@@ -272,6 +274,21 @@ export async function POST(req: Request) {
             client: user,
           });
           break;
+        case "paystack": // Add Paystack case
+          redirectURL = await getPaystackPaymentURL({
+            publicKey:paywalls?.paystack?.publicKey ?? "", 
+            secretKey:paywalls?.paystack?.secretKey ?? "", 
+            filledProducts,
+            shippingCost,
+            currency,
+            locale,
+            orderID: order.id,
+            customerEmail: checkoutData.shipping.email,
+            customerName: checkoutData.shipping.name,
+            total: totalWithShipping,
+            client: user,
+          });
+          break
 
         default:
           break;

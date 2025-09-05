@@ -314,6 +314,14 @@ export const countryList = [
       pl: "Watykan",
     },
   },
+
+  {
+    value: "ng",
+    label: {
+      en: "Nigeria",
+      pl: "Naija",
+    },
+  },
 ] as const;
 
 export type Country = (typeof countryList)[number]["value"];
