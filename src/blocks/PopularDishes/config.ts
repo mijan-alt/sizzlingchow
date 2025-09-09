@@ -1,5 +1,5 @@
 // blocks/PopularDishes/config.ts
-import { type Block } from "payload";
+import type { Block } from "payload";
 
 export const PopularDishes: Block = {
   slug: "popularDishes",

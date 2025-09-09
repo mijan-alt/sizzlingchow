@@ -12,7 +12,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { type PopularDishes } from "@/payload-types";
+
+import type { PopularDishes } from "@/payload-types";
 
 export const PopularDishesBlock = (props: PopularDishes) => {
   const { heading, dishes } = props;

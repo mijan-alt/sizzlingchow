@@ -264,6 +264,8 @@ export interface Page {
     | AccordionBlock
     | HotspotBlock
     | PopularDishes
+    | SeasonalMenu
+    | CustomCta
   )[];
   meta?: {
     title?: string | null;
@@ -1231,6 +1233,67 @@ export interface PopularDishes {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "seasonalMenu".
+ */
+export interface SeasonalMenu {
+  heading: string;
+  subheading?: string | null;
+  description?: string | null;
+  ctaText?: string | null;
+  menuItems: {
+    title: string;
+    image: string | Media;
+    buttonText?: string | null;
+    link: {
+      type?: ('reference' | 'custom') | null;
+      newTab?: boolean | null;
+      reference?:
+        | ({
+            relationTo: 'pages';
+            value: string | Page;
+          } | null)
+        | ({
+            relationTo: 'posts';
+            value: string | Post;
+          } | null);
+      url?: string | null;
+      label: string;
+    };
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'seasonalMenu';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "customCta".
+ */
+export interface CustomCta {
+  heading: string;
+  subheading?: string | null;
+  backgroundImage: string | Media;
+  link: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: string | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: string | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'customCta';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "customers".
  */
 export interface Customer {
@@ -1864,6 +1927,8 @@ export interface PagesSelect<T extends boolean = true> {
         accordion?: T | AccordionBlockSelect<T>;
         hotspotZone?: T | HotspotBlockSelect<T>;
         popularDishes?: T | PopularDishesSelect<T>;
+        seasonalMenu?: T | SeasonalMenuSelect<T>;
+        customCta?: T | CustomCtaSelect<T>;
       };
   meta?:
     | T
@@ -2081,6 +2146,55 @@ export interface PopularDishesSelect<T extends boolean = true> {
         isSpecial?: T;
         orderUrl?: T;
         id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "seasonalMenu_select".
+ */
+export interface SeasonalMenuSelect<T extends boolean = true> {
+  heading?: T;
+  subheading?: T;
+  description?: T;
+  ctaText?: T;
+  menuItems?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        buttonText?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "customCta_select".
+ */
+export interface CustomCtaSelect<T extends boolean = true> {
+  heading?: T;
+  subheading?: T;
+  backgroundImage?: T;
+  link?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
       };
   id?: T;
   blockName?: T;
@@ -2780,21 +2894,6 @@ export interface Header {
  */
 export interface Footer {
   id: string;
-  attribution?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
   navItems?:
     | {
         link: {
@@ -2815,6 +2914,21 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
+  attribution?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -3333,7 +3447,6 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
-  attribution?: T;
   navItems?:
     | T
     | {
@@ -3348,6 +3461,7 @@ export interface FooterSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  attribution?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

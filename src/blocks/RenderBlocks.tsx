@@ -7,7 +7,9 @@ import { MediaBlock } from "@/blocks/MediaBlock/Component";
 import { HotspotBlock } from "./(ecommerce)/Hotspot/Component";
 import { AccordionBlock } from "./Accordion/Component";
 import { CarouselBlock } from "./Carousel/Component";
+import { CustomCtaBlock } from "./CustomCta/Component";
 import { PopularDishesBlock } from "./PopularDishes/Component";
+import { SeasonalMenuBlock } from "./SeasonalMenu/Component";
 
 import type { Page } from "@/payload-types";
 
@@ -22,6 +24,8 @@ const blockComponents = {
   accordion: AccordionBlock,
   hotspotZone: HotspotBlock,
   popularDishes: PopularDishesBlock,
+  SeasonalMenu: SeasonalMenuBlock,
+  customCta: CustomCtaBlock
 };
 
 export const RenderBlocks = ({ blocks }: { blocks: Page["layout"][0][] }) => {
@@ -34,7 +38,7 @@ export const RenderBlocks = ({ blocks }: { blocks: Page["layout"][0][] }) => {
           const { blockType } = block;
 
           if (blockType && blockType in blockComponents) {
-            const Block = blockComponents[blockType];
+            const Block = blockComponents[blockType as keyof typeof blockComponents];
 
             if (Block) {
               return (

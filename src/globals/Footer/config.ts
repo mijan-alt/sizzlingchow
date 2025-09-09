@@ -8,38 +8,33 @@ export const Footer: GlobalConfig = {
   access: {
     read: () => true,
   },
-  label: {
-    en: "Footer",
-    pl: "Stopka",
-  },
+  label: "Footer",
   admin: {
-    group: {
-      en: "Page Settings",
-      pl: "Ustawienia strony",
-    },
+    group: "Page Settings",
   },
   fields: [
     {
-      name: "attribution",
-      type: "richText",
-      label: "Attribution",
-      localized: true,
-    },
-    {
       name: "navItems",
       type: "array",
+      label: "Navigation Links",
       fields: [
         link({
           appearances: false,
         }),
       ],
-      maxRows: 6,
+      maxRows: 10,
       admin: {
         initCollapsed: true,
         components: {
           RowLabel: "@/globals/Footer/RowLabel#RowLabel",
         },
       },
+    },
+    {
+      name: "attribution",
+      type: "richText",
+      label: "Attribution",
+      localized: true,
     },
   ],
   hooks: {
