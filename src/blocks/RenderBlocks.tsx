@@ -24,8 +24,8 @@ const blockComponents = {
   accordion: AccordionBlock,
   hotspotZone: HotspotBlock,
   popularDishes: PopularDishesBlock,
-  SeasonalMenu: SeasonalMenuBlock,
-  customCta: CustomCtaBlock
+  seasonalMenu: SeasonalMenuBlock,
+  customCta: CustomCtaBlock,
 };
 
 export const RenderBlocks = ({ blocks }: { blocks: Page["layout"][0][] }) => {
@@ -38,7 +38,7 @@ export const RenderBlocks = ({ blocks }: { blocks: Page["layout"][0][] }) => {
           const { blockType } = block;
 
           if (blockType && blockType in blockComponents) {
-            const Block = blockComponents[blockType as keyof typeof blockComponents];
+            const Block = blockComponents[blockType];
 
             if (Block) {
               return (

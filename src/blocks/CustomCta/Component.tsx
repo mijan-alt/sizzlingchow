@@ -27,9 +27,8 @@ export const CustomCtaBlock = ({ heading, subheading, backgroundImage, link }: C
             <h2 className="text-2xl font-semibold text-white md:text-4xl">{heading}</h2>
 
             {link && (
-              <CMSLink {...link}>
+              <CMSLink {...link}  className="h-10 rounded-md px-6 text-sm font-medium">
                 <Button className="h-10 rounded-md px-6 text-sm font-medium">
-                  {link?.label ?? "Grab your offer"}
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
               </CMSLink>

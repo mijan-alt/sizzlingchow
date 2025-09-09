@@ -75,7 +75,7 @@ export const HotspotBlock = async ({
   switch (appearance) {
     case "default": {
       HotspotComponent = (
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
+        <div className="grid gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
           <WithInlinePrice products={productsToShow} />;
         </div>
       );

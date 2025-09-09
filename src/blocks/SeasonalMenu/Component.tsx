@@ -40,12 +40,12 @@ export const SeasonalMenuBlock = (props: SeasonalMenu) => {
   }, []);
 
   return (
-    <section className="w-full bg-gradient-to-br from-orange-50 to-amber-50 py-16">
+    <section className="w-full bg-gradient-to-br py-16">
       <div className="mx-auto max-w-7xl px-4">
         <div className="flex flex-col lg:flex-row">
           {/* Left Content */}
           <div className="mb-8 lg:mb-0 lg:w-1/3 lg:pr-8">
-            {subheading && <h3 className="font-script mb-2 text-2xl text-orange-400">{subheading}</h3>}
+            {subheading && <h3 className="font-script text-primary mb-2 text-2xl">{subheading}</h3>}
             <h2 className="mb-6 text-4xl leading-tight font-bold text-gray-800 lg:text-5xl">{heading}</h2>
             {description && <p className="mb-6 text-lg leading-relaxed text-gray-700">{description}</p>}
             {ctaText && (
@@ -66,6 +66,8 @@ export const SeasonalMenuBlock = (props: SeasonalMenu) => {
                   ref={(el) => {
                     cardRefs.current[i] = el;
                   }}
+                  onMouseEnter={() => setVisibleCards({ [i]: true })}
+                  onMouseLeave={() => setVisibleCards({ [i]: false })}
                 >
                   <Media
                     resource={item.image}
@@ -85,10 +87,10 @@ export const SeasonalMenuBlock = (props: SeasonalMenu) => {
                         {item.link ? (
                           <CMSLink
                             {...item.link}
-                            className="rounded-none bg-orange-400 px-6 py-2 font-medium tracking-wider text-white transition-all duration-300 hover:bg-orange-500"
+                            className="bg-primary rounded-none px-6 py-2 font-medium tracking-wider text-white transition-all duration-300 hover:bg-orange-500"
                           />
                         ) : (
-                          <Button className="rounded-none bg-orange-400 px-6 py-2 text-white hover:bg-orange-500">
+                          <Button className="bg-primary rounded-none px-6 py-2 text-white hover:bg-orange-500">
                             {item.buttonText ?? "Order Now"}
                           </Button>
                         )}

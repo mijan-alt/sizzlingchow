@@ -66,7 +66,7 @@ export default async function Page({ params: paramsPromise }: Args) {
   const { hero, layout } = page;
 
   return (
-    <article className="pb-24 pt-16">
+    <article className="pb-24">
       <PageClient />
       {/* Allows redirects for valid pages too */}
       {!page && slug !== "home" && <PayloadRedirects locale={locale} url={url} />}
