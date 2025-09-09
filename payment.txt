@@ -16,14 +16,13 @@ import { getCustomer } from "@/utilities/getCustomer";
 import { getCachedGlobal } from "@/utilities/getGlobals";
 import config from "@payload-config";
 
+
 const createCouriers = async (locale: Locale) => {
   const couriersModule = await import("@/globals/(ecommerce)/Couriers/utils/couriersConfig");
-  console.log("creating couriers:", locale);
   return couriersModule.createCouriers(locale);
 };
 
 export async function POST(req: Request) {
-  console.log("hitting payment route");
   try {
     const payload = await getPayload({ config });
     const {
@@ -78,35 +77,16 @@ export async function POST(req: Request) {
     const totalWeight = getTotalWeight(filledProducts, cart);
     const couriers = await createCouriers(locale);
 
-    console.log("total product", total)
-    console.log("current currency", currency)
-
     const courier = couriers.find((courier) => courier?.key === checkoutData.deliveryMethod);
     if (!courier) {
       return Response.json({ status: 400, message: "Courier not found" });
     }
     const courierData = await courier.getSettings();
-    console.log("countr", selectedCountry);
-
-    courierData.deliveryZones?.forEach((zone, index) => {
-      console.log({ index, countries: zone.countries, range: zone.range, freeshipping: zone.freeShipping });
-    });
     const shippingCost = courierData.deliveryZones
       ?.find((zone) => zone.countries.includes(selectedCountry))
       ?.range?.find((range) => range.weightFrom <= totalWeight && range.weightTo >= totalWeight)
       ?.pricing.find((pricing) => pricing.currency === currency)?.value;
 
-    const isTrue = courierData.deliveryZones?.find((zone) => zone.countries.includes(selectedCountry));
-    const isRange = courierData.deliveryZones
-      ?.find((zone) => zone.countries.includes(selectedCountry))
-      ?.range?.find((range) => range.weightFrom <= totalWeight && range.weightTo >= totalWeight);
-      console.log("total weight", totalWeight)
-    console.log("isTrue", isTrue);
-    console.log("isRange", isRange);
-
-    // const shippingCost = 500;
-
-    console.log("shipping cost", shippingCost);
     if (!shippingCost) {
       return Response.json({ status: 400, message: "Shipping cost not found" });
     }
@@ -254,7 +234,7 @@ export async function POST(req: Request) {
 
     const totalWithShipping = (total.find((price) => price.currency === currency)?.value ?? 0) + shippingCost;
 
-    // console.log(paywalls.paywall);
+    console.log(paywalls.paywall);
 
     try {
       switch (paywalls.paywall) {
@@ -296,8 +276,8 @@ export async function POST(req: Request) {
           break;
         case "paystack": // Add Paystack case
           redirectURL = await getPaystackPaymentURL({
-            publicKey: paywalls?.paystack?.publicKey ?? "",
-            secretKey: paywalls?.paystack?.secretKey ?? "",
+            publicKey:paywalls?.paystack?.publicKey ?? "", 
+            secretKey:paywalls?.paystack?.secretKey ?? "", 
             filledProducts,
             shippingCost,
             currency,
@@ -308,7 +288,7 @@ export async function POST(req: Request) {
             total: totalWithShipping,
             client: user,
           });
-          break;
+          break
 
         default:
           break;

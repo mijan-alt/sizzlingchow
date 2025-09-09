@@ -8,7 +8,7 @@ import { getCachedGlobal } from "@/utilities/getGlobals";
 import config from "@payload-config";
 
 // Define Paystack event types for better type safety
-type PaystackChargeSuccessData= {
+type PaystackChargeSuccessData = {
   reference: string;
   metadata?: {
     order_id?: string;
@@ -16,15 +16,16 @@ type PaystackChargeSuccessData= {
   status: string;
   amount?: number;
   id?: string;
-}
+};
 
 type PaystackEvent = {
   event: string;
   data: PaystackChargeSuccessData;
-}
+};
 
 export async function POST(req: Request) {
   try {
+    console.log("hitting the webhook");
     const headersList = await headers();
     const signature = headersList.get("x-paystack-signature") ?? "";
 
@@ -42,14 +43,11 @@ export async function POST(req: Request) {
 
     // Verify Paystack webhook signature
     let event: PaystackEvent;
-    
+
     try {
       // Verify the signature
-      const hash = crypto
-        .createHmac("sha512", webhookSecret)
-        .update(rawBody)
-        .digest("hex");
-      
+      const hash = crypto.createHmac("sha512", webhookSecret).update(rawBody).digest("hex");
+
       if (hash !== signature) {
         return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
       }
@@ -61,6 +59,8 @@ export async function POST(req: Request) {
       }
       return NextResponse.json({ error: "Webhook Error: Unknown error" }, { status: 400 });
     }
+
+    console.log("paystact event", event);
 
     // Handle different Paystack events
     switch (event.event) {
@@ -77,7 +77,6 @@ export async function POST(req: Request) {
                 status: "paid",
                 transactionID: chargeData.id ?? chargeData.reference,
                 amountPaid: chargeData.amount ? chargeData.amount / 100 : undefined,
-               
               },
             },
           });
@@ -98,7 +97,6 @@ export async function POST(req: Request) {
               orderDetails: {
                 status: "unpaid",
                 transactionID: chargeData.id ?? chargeData.reference,
-             
               },
             },
           });
@@ -113,7 +111,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ status: 200 });
   } catch (error) {
     console.error("Paystack webhook error:", error);
-    
+
     if (error instanceof Error) {
       return NextResponse.json({ error: `Webhook Error: ${error.message}` }, { status: 400 });
     }

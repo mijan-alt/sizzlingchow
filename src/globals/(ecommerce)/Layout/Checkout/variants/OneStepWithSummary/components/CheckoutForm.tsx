@@ -1,5 +1,5 @@
 "use client";
-
+//checkoutForm.tsx
 import { Button, Radio, RadioGroup } from "@headlessui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
@@ -103,6 +103,8 @@ export const CheckoutForm = ({ user, geowidgetToken }: { user?: Customer; geowid
     }[]
   >();
   const [deliveryMethods, setDeliveryMethods] = useState<FilledCourier[]>([]);
+
+  console.log("delivery methods", deliveryMethods);
 
   const { cart, setCart } = useCart();
   const locale = useLocale() as Locale;
@@ -343,6 +345,7 @@ export const CheckoutForm = ({ user, geowidgetToken }: { user?: Customer; geowid
                                 <SelectItem value="pl">{c("pl")}</SelectItem>
                                 <SelectItem value="gb">{c("gb")}</SelectItem>
                                 <SelectItem value="us">{c("us")}</SelectItem>
+                                <SelectItem value="ng">{c("ng")}</SelectItem>
                               </SelectContent>
                             </Select>
                           </FormControl>

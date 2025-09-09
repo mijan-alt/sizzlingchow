@@ -1,3 +1,4 @@
+//next/route.ts
 import { getPayload } from "payload";
 
 import { type Country } from "@/globals/(ecommerce)/Couriers/utils/countryList";
@@ -9,6 +10,7 @@ import { type Cart } from "@/stores/CartStore/types";
 import config from "@payload-config";
 
 export async function POST(req: Request) {
+  console.log("hitting the next api route");
   const { getCouriersArray } = await import("@/globals/(ecommerce)/Couriers/utils/couriersConfig");
   try {
     const payload = await getPayload({ config });

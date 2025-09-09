@@ -263,6 +263,7 @@ export interface Page {
     | CarouselBlock
     | AccordionBlock
     | HotspotBlock
+    | PopularDishes
   )[];
   meta?: {
     title?: string | null;
@@ -1203,6 +1204,33 @@ export interface Product {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "popularDishes".
+ */
+export interface PopularDishes {
+  heading: {
+    subtitle: string;
+    title: string;
+    description: string;
+  };
+  backgroundImage: string | Media;
+  dishes?:
+    | {
+        image: string | Media;
+        title: string;
+        isSpecial?: boolean | null;
+        /**
+         * URL for the Order Now button
+         */
+        orderUrl?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'popularDishes';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "customers".
  */
 export interface Customer {
@@ -1835,6 +1863,7 @@ export interface PagesSelect<T extends boolean = true> {
         carousel?: T | CarouselBlockSelect<T>;
         accordion?: T | AccordionBlockSelect<T>;
         hotspotZone?: T | HotspotBlockSelect<T>;
+        popularDishes?: T | PopularDishesSelect<T>;
       };
   meta?:
     | T
@@ -2028,6 +2057,31 @@ export interface HotspotBlockSelect<T extends boolean = true> {
   spacingTop?: T;
   paddingBottom?: T;
   paddingTop?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "popularDishes_select".
+ */
+export interface PopularDishesSelect<T extends boolean = true> {
+  heading?:
+    | T
+    | {
+        subtitle?: T;
+        title?: T;
+        description?: T;
+      };
+  backgroundImage?: T;
+  dishes?:
+    | T
+    | {
+        image?: T;
+        title?: T;
+        isSpecial?: T;
+        orderUrl?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

@@ -1,3 +1,5 @@
+
+//OrderSummary.tsx
 import { TrashIcon } from "@heroicons/react/20/solid";
 import { useTranslations } from "next-intl";
 

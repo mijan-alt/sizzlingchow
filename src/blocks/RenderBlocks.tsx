@@ -7,6 +7,7 @@ import { MediaBlock } from "@/blocks/MediaBlock/Component";
 import { HotspotBlock } from "./(ecommerce)/Hotspot/Component";
 import { AccordionBlock } from "./Accordion/Component";
 import { CarouselBlock } from "./Carousel/Component";
+import { PopularDishesBlock } from "./PopularDishes/Component";
 
 import type { Page } from "@/payload-types";
 
@@ -20,6 +21,7 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   accordion: AccordionBlock,
   hotspotZone: HotspotBlock,
+  popularDishes: PopularDishesBlock,
 };
 
 export const RenderBlocks = ({ blocks }: { blocks: Page["layout"][0][] }) => {

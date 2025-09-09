@@ -12,7 +12,7 @@ type CurrencyState = {
 };
 
 const useCurrencyStore = create<CurrencyState>((set) => ({
-  currency: "USD",
+  currency: "NGN",
   setCurrency: (currencyToSet: Currency) => {
     if (canUseDOM) {
       window.localStorage.setItem("currency", currencyToSet);

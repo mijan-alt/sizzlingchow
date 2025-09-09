@@ -1,0 +1,80 @@
+courier data {
+  createdAt: '2025-09-05T22:51:50.251Z',
+  updatedAt: '2025-09-05T23:40:21.118Z',
+  globalType: 'inpost-courier',
+  enabled: true,
+  settings: {
+    label: 'Home Delivery',
+    description: 'Direct delivery to your address within 1-2 business days. Someone must be present to receive the package.'
+  },
+  deliveryZones: [
+    {
+      countries: [Array],
+      freeShipping: [Array],
+      range: [Array],
+      id: '68bb68b6ccc0538451fb5f05'
+    },
+    {
+      countries: [Array],
+      freeShipping: [Array],
+      range: [Array],
+      id: '68bb6d97f413491a37495594'
+    },
+    {
+      countries: [Array],
+      freeShipping: [Array],
+      range: [Array],
+      id: '68bb6f9af413491a3749559a'
+    }
+  ],
+  clientId: 'test-client-id',
+  APIUrl: 'https://sandbox-api-shipx-pl.easypack24.net',
+  shipXAPIKey: 'test-api-key',
+  id: '68bb6986b47cfbf32b1c2395'
+}
+zones [ 'ng' ]
+range [
+  {
+    weightFrom: 0,
+    weightTo: 100,
+    pricing: [ [Object] ],
+    id: '68bb74bff413491a374955b4'
+  }
+]
+zones [
+  { value: 2500, currency: 'NGN', id: '68bb68c7ccc0538451fb5f07' },
+  { value: 500, currency: 'NGN', id: '68bb70f4f413491a374955a6' }
+]
+shipping cost undefined
+
+
+
+ const isTrue = courierData.deliveryZones?.find((zone) => zone.countries.includes(selectedCountry));
+ console.log(isTrue)
+{
+  countries: [ 'ng' ],
+  freeShipping: [
+    { value: 2500, currency: 'NGN', id: '68bb68c7ccc0538451fb5f07' },
+    { value: 500, currency: 'NGN', id: '68bb70f4f413491a374955a6' }
+  ],
+  range: [
+    {
+      weightFrom: 0,
+      weightTo: 100,
+      pricing: [Array],
+      id: '68bb74bff413491a374955b4'
+    }
+  ],
+  id: '68bb68b6ccc0538451fb5f05'
+}
+
+
+
+
+
+
+
+pricing in price client: [
+  { value: 180, currency: 'USD', id: '68b9213590380a0004f2d46e' },
+  { value: 190, currency: 'PLN', id: '68b9213590380a0004f2d46f' }
+]

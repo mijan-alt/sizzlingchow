@@ -2,7 +2,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
-import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
+import { resendAdapter } from "@payloadcms/email-resend";
+import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
 // import { s3Storage } from "@payloadcms/storage-s3";
 import { buildConfig } from "payload";
 import { en } from "payload/i18n/en";
@@ -35,8 +36,6 @@ import { Footer } from "./globals/Footer/config";
 import { Header } from "./globals/Header/config";
 import { plugins } from "./plugins";
 import { getServerSideURL } from "./utilities/getURL";
-
-
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -159,9 +158,8 @@ export default buildConfig({
     //     responseChecksumValidation: "WHEN_REQUIRED",
     //   },
 
-      
     // }),
-     vercelBlobStorage({
+    vercelBlobStorage({
       enabled: true, // Optional, defaults to true
       // Specify which collections should use Vercel Blob
       collections: {
@@ -176,4 +174,9 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
+  email: resendAdapter({
+    defaultFromAddress: "hello@websitevantage.com",
+    defaultFromName: "WebsiteVantage",
+    apiKey: process.env.RESEND_API_KEY!,
+  }),
 });

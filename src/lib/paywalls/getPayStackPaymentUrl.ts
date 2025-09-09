@@ -7,7 +7,7 @@ import { type Currency } from "@/stores/Currency/types";
 import { type FilledProduct } from "../getFilledProducts";
 
 // Define interface for Paystack response
-type PaystackInitializeResponse= {
+type PaystackInitializeResponse = {
   status: boolean;
   message: string;
   data: {
@@ -15,17 +15,16 @@ type PaystackInitializeResponse= {
     access_code: string;
     reference: string;
   };
-}
+};
 
-type PaystackVerifyResponse= {
+type PaystackVerifyResponse = {
   status: boolean;
   message: string;
   data: {
     reference: string;
     status: string;
-    
   };
-}
+};
 
 export const getPaystackPaymentURL = async ({
   filledProducts,
@@ -55,6 +54,9 @@ export const getPaystackPaymentURL = async ({
   try {
     // Convert amount to kobo (smallest currency unit for NGN) or cents for other currencies
     const amountInSmallestUnit = total * 100;
+    console.log("currency", currency)
+    console.log("amountInsmallestUnit", amountInSmallestUnit);
+    console.log("filledProducts", filledProducts);
 
     // Prepare line items for metadata
     const lineItems = filledProducts.map((product) => {
@@ -117,7 +119,7 @@ export const getPaystackPaymentURL = async ({
           Authorization: `Bearer ${secretKey}`,
           "Content-Type": "application/json",
         },
-      }
+      },
     );
 
     // Now TypeScript knows the structure of response.data
@@ -145,12 +147,12 @@ export const verifyPaystackPayment = async (reference: string, secretKey: string
           Authorization: `Bearer ${secretKey}`,
           "Content-Type": "application/json",
         },
-      }
+      },
     );
 
     return response.data;
   } catch (error) {
     console.error("Paystack payment verification error:", error);
     throw new Error(`Payment verification failed: ${error}`);
-  };
+  }
 };
