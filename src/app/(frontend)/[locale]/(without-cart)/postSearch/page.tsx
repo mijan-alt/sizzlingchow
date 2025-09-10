@@ -23,7 +23,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
   const payload = await getPayload({ config });
   const locale = (await getLocale()) as Locale;
 
-  const posts = await payload.find({
+  const blogs = await payload.find({
     collection: "search",
     depth: 1,
     limit: 12,
@@ -79,8 +79,8 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
         </div>
       </div>
 
-      {posts.totalDocs > 0 ? (
-        <CollectionArchive posts={posts.docs as CardPostData[]} />
+      {blogs.totalDocs > 0 ? (
+        <CollectionArchive blogs={blogs.docs as CardPostData[]} />
       ) : (
         <div className="container">No results found.</div>
       )}
