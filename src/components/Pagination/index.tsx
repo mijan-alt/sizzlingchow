@@ -31,7 +31,7 @@ export const Pagination = (props: { className?: string; page: number; totalPages
             <PaginationPrevious
               disabled={!hasPrevPage}
               onClick={() => {
-                router.push(`/posts/page/${page - 1}`);
+                router.push(`/bogs/page/${page - 1}`);
               }}
             />
           </PaginationItem>
@@ -46,7 +46,7 @@ export const Pagination = (props: { className?: string; page: number; totalPages
             <PaginationItem>
               <PaginationLink
                 onClick={() => {
-                  router.push(`/posts/page/${page - 1}`);
+                  router.push(`/blogs/page/${page - 1}`);
                 }}
               >
                 {page - 1}
@@ -58,7 +58,7 @@ export const Pagination = (props: { className?: string; page: number; totalPages
             <PaginationLink
               isActive
               onClick={() => {
-                router.push(`/posts/page/${page}`);
+                router.push(`/blogs/page/${page}`);
               }}
             >
               {page}
@@ -69,7 +69,7 @@ export const Pagination = (props: { className?: string; page: number; totalPages
             <PaginationItem>
               <PaginationLink
                 onClick={() => {
-                  router.push(`/posts/page/${page + 1}`);
+                  router.push(`/blogs/page/${page + 1}`);
                 }}
               >
                 {page + 1}
@@ -87,7 +87,7 @@ export const Pagination = (props: { className?: string; page: number; totalPages
             <PaginationNext
               disabled={!hasNextPage}
               onClick={() => {
-                router.push(`/posts/page/${page + 1}`);
+                router.push(`/blogs/page/${page + 1}`);
               }}
             />
           </PaginationItem>

@@ -81,7 +81,7 @@ export async function Footer() {
   const locale = (await getLocale()) as Locale;
   const footerData: Footer = await getCachedGlobal("footer", locale, 1)();
 
-  const { navItems = [], socialLinks = [], description, title, attribution, legalLinks = [] } = footerData;
+  const { navItems = [], socialLinks = [], description,  attribution, legalLinks = [] } = footerData;
 
   return (
     <footer className="bg-secondary py-32 text-white">
@@ -93,7 +93,7 @@ export async function Footer() {
               <Link href="/">
                 <Logo />
               </Link>
-              {title && <h2 className="text-xl font-semibold">{title}</h2>}
+              {/* {title && <h2 className="text-xl font-semibold">{title}</h2>} */}
             </div>
 
             {description && <p className="text-muted-foreground max-w-[70%] text-sm">{description}</p>}

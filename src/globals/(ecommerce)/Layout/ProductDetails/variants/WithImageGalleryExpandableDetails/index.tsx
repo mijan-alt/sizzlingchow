@@ -39,7 +39,9 @@ export const WithImageGalleryExpandableDetails = ({
   }));
 
   const selectedVariant =
-    filledVariants?.find((filledVariant) => filledVariant.slug === variant) ?? filledVariants?.find((variant) => variant.stock > 0) ?? filledVariants?.[0];
+    filledVariants?.find((filledVariant) => filledVariant.slug === variant) ??
+    filledVariants?.find((variant) => variant.stock > 0) ??
+    filledVariants?.[0];
 
   const maxQuantity = selectedVariant?.stock ?? product.stock ?? 999;
   const minQuantity = 1;
@@ -75,7 +77,7 @@ export const WithImageGalleryExpandableDetails = ({
                 typeof image !== "string" && (
                   <Tab
                     key={image.id}
-                    className="focus:ring-3 focus:outline-hidden focus:ring-main-500/50 group relative flex aspect-square cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:ring-offset-4"
+                    className="focus:ring-primary group relative flex aspect-square cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium text-gray-900 uppercase hover:bg-gray-50 focus:ring-3 focus:ring-offset-4 focus:outline-hidden"
                   >
                     <span className="sr-only">{image.alt}</span>
                     <span className="absolute inset-0 overflow-hidden rounded-md">
@@ -83,7 +85,7 @@ export const WithImageGalleryExpandableDetails = ({
                     </span>
                     <span
                       aria-hidden="true"
-                      className="pointer-events-none absolute inset-0 rounded-md ring-2 ring-transparent ring-offset-2 group-data-selected:ring-main-500"
+                      className="group-data-selected:ring-primary pointer-events-none absolute inset-0 rounded-md ring-2 ring-transparent ring-offset-2"
                     />
                   </Tab>
                 ),
@@ -121,7 +123,7 @@ export const WithImageGalleryExpandableDetails = ({
                           aria-hidden="true"
                           className={cn(
                             // product.rating > rating ? "text-main-500" : "text-gray-300",
-                            "text-main-500", // temporary
+                            "text-primary", // temporary
                             "size-5 shrink-0",
                           )}
                         />
@@ -158,8 +160,8 @@ export const WithImageGalleryExpandableDetails = ({
                 {product.details?.map((detail) => (
                   <Disclosure key={detail.id} as="div">
                     <h3>
-                      <DisclosureButton className="group relative flex w-full items-center justify-between py-6 text-left">
-                        <span className="text-sm font-medium text-gray-900 group-data-open:text-main-600">
+                      <DisclosureButton className="group bg-primary relative flex w-full items-center justify-between py-6 text-left">
+                        <span className="group-data-open:text-primary text-sm font-medium text-gray-900">
                           {detail.title}
                         </span>
                         <span className="ml-6 flex items-center">
@@ -169,7 +171,7 @@ export const WithImageGalleryExpandableDetails = ({
                           />
                           <MinusIcon
                             aria-hidden="true"
-                            className="hidden size-6 text-main-400 group-hover:text-main-500 group-data-open:block"
+                            className="text-main-400 group-hover:text-secondary hidden size-6 group-data-open:block"
                           />
                         </span>
                       </DisclosureButton>

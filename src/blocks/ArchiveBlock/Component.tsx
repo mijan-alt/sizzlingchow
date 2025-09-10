@@ -4,7 +4,7 @@ import { CollectionArchive } from "@/components/CollectionArchive";
 import RichText from "@/components/RichText";
 import config from "@payload-config";
 
-import type { Post, ArchiveBlock as ArchiveBlockProps } from "@/payload-types";
+import type { Blog, ArchiveBlock as ArchiveBlockProps } from "@/payload-types";
 
 export const ArchiveBlock = async (
   props: ArchiveBlockProps & {
@@ -15,7 +15,7 @@ export const ArchiveBlock = async (
 
   const limit = limitFromProps ?? 3;
 
-  let posts: Post[] = [];
+  let blogs: Blog[] = [];
 
   if (populateBy === "collection") {
     const payload = await getPayload({ config });
@@ -26,7 +26,7 @@ export const ArchiveBlock = async (
     });
 
     const fetchedPosts = await payload.find({
-      collection: "posts",
+      collection: "blogs",
       depth: 1,
       limit,
       ...(flattenedCategories && flattenedCategories.length > 0
@@ -40,14 +40,14 @@ export const ArchiveBlock = async (
         : {}),
     });
 
-    posts = fetchedPosts.docs;
+    blogs = fetchedPosts.docs;
   } else {
     if (selectedDocs?.length) {
       const filteredSelectedPosts = selectedDocs.map((post) => {
         if (typeof post.value === "object") return post.value;
-      }) as Post[];
+      }) as Blog[];
 
-      posts = filteredSelectedPosts;
+      blogs = filteredSelectedPosts;
     }
   }
 
@@ -58,7 +58,7 @@ export const ArchiveBlock = async (
           <RichText className="ml-0 max-w-3xl" data={introContent} enableGutter={false} />
         </div>
       )}
-      <CollectionArchive posts={posts} />
+      <CollectionArchive blogs={blogs} />
     </div>
   );
 };

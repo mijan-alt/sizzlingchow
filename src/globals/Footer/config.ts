@@ -18,16 +18,16 @@ export const Footer: GlobalConfig = {
       type: "text",
       label: "Footer Title",
       admin: {
-        description: "Optional title to display next to the logo"
-      }
+        description: "Optional title to display next to the logo",
+      },
     },
     {
       name: "description",
       type: "textarea",
       label: "Description",
       admin: {
-        description: "Brief description about your company/service"
-      }
+        description: "Brief description about your company/service",
+      },
     },
     {
       name: "socialLinks",
@@ -41,29 +41,29 @@ export const Footer: GlobalConfig = {
           options: [
             {
               label: "Instagram",
-              value: "instagram"
+              value: "instagram",
             },
             {
-              label: "Facebook", 
-              value: "facebook"
+              label: "Facebook",
+              value: "facebook",
             },
             {
               label: "Twitter",
-              value: "twitter"
+              value: "twitter",
             },
             {
               label: "LinkedIn",
-              value: "linkedin"
-            }
+              value: "linkedin",
+            },
           ],
-          required: true
+          required: true,
         },
         {
           name: "url",
           type: "text",
           label: "URL",
-          required: true
-        }
+          required: true,
+        },
       ],
       maxRows: 10,
       admin: {
@@ -82,7 +82,7 @@ export const Footer: GlobalConfig = {
           name: "title",
           type: "text",
           label: "Section Title",
-          required: true
+          required: true,
         },
         {
           name: "links",
@@ -94,13 +94,13 @@ export const Footer: GlobalConfig = {
             }),
           ],
           maxRows: 10,
-        }
+        },
       ],
       maxRows: 3,
       admin: {
         initCollapsed: true,
         components: {
-          RowLabel: "@/globals/Footer/RowLabel#NavRowLabel",
+          RowLabel: "@/globals/Footer/RowLabel#RowLabel",
         },
       },
     },
@@ -128,8 +128,8 @@ export const Footer: GlobalConfig = {
       label: "Copyright/Attribution",
       localized: true,
       admin: {
-        description: "Copyright notice or custom attribution text"
-      }
+        description: "Copyright notice or custom attribution text",
+      },
     },
   ],
   hooks: {

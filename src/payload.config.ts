@@ -20,10 +20,10 @@ import { ProductReviews } from "./collections/(ecommerce)/ProductReviews";
 import { ProductSubCategories } from "./collections/(ecommerce)/ProductSubCategories";
 import { Products } from "./collections/(ecommerce)/Products";
 import { Administrators } from "./collections/Administrators";
+import { Blogs } from "./collections/Blogs";
 import { Categories } from "./collections/Categories";
 import { Media } from "./collections/Media";
 import { Pages } from "./collections/Pages";
-import { Posts } from "./collections/Posts";
 import { InPostCourier } from "./globals/(ecommerce)/Couriers/InPostCourier/config";
 import { InPostCourierCOD } from "./globals/(ecommerce)/Couriers/InPostCourierCOD/config";
 import { InPostPickup } from "./globals/(ecommerce)/Couriers/InPostPickup/config";
@@ -116,7 +116,7 @@ export default buildConfig({
   }),
   collections: [
     Pages,
-    Posts,
+    Blogs,
     Media,
     Categories,
     Administrators,

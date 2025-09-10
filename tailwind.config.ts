@@ -33,6 +33,10 @@ const config: Config = {
       },
     },
     extend: {
+      fontFamily: {
+        tangerine: ["var(--font-tangerine)"],
+        raleway: ["Raleway", "sans-serif"], // Your main font
+      },
       transitionProperty: {
         transformColors: "transform, background, color, background-color",
       },
@@ -125,10 +129,7 @@ const config: Config = {
           ring: "hsl(var(--sidebar-ring))",
         },
       },
-      fontFamily: {
-        mono: ["var(--font-geist-mono)"],
-        sans: ["var(--font-geist-sans)"],
-      },
+
       keyframes: {
         "accordion-down": {
           from: {

@@ -3,7 +3,7 @@ import { useRowLabel } from "@payloadcms/ui";
 
 import { type Header } from "@/payload-types";
 
-export const NavRowLabel = () => {
+export const RowLabel = () => {
   const data = useRowLabel<NonNullable<Header["navItems"]>[number]>();
 
   const label = data?.data?.link?.label

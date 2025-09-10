@@ -28,15 +28,15 @@ import { revalidateDelete, revalidatePost } from "./hooks/revalidatePost";
 
 import type { CollectionConfig } from "payload";
 
-export const Posts: CollectionConfig<"posts"> = {
-  slug: "posts",
+export const Blogs: CollectionConfig<"blogs"> = {
+  slug: "blogs",
   labels: {
     singular: {
-      en: "Post",
-      pl: "Post",
+      en: "Blog",
+      pl: "Blog",
     },
     plural: {
-      en: "Posts",
+      en: "Blogs",
       pl: "Posty",
     },
   },
@@ -63,7 +63,7 @@ export const Posts: CollectionConfig<"posts"> = {
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({
-          path: `/posts/${typeof data?.slug === "string" ? data.slug : ""}`,
+          path: `/blogs/${typeof data?.slug === "string" ? data.slug : ""}`,
           locale: req.locale,
         });
         return `${process.env.NEXT_PUBLIC_SERVER_URL}${path}`;
@@ -71,7 +71,7 @@ export const Posts: CollectionConfig<"posts"> = {
     },
     preview: (data, { req }) =>
       generatePreviewPath({
-        path: `/posts/${typeof data?.slug === "string" ? data.slug : ""}`,
+        path: `/blogs/${typeof data?.slug === "string" ? data.slug : ""}`,
         locale: req.locale,
       }),
     useAsTitle: "title",
@@ -135,7 +135,7 @@ export const Posts: CollectionConfig<"posts"> = {
                 };
               },
               hasMany: true,
-              relationTo: "posts",
+              relationTo: "blogs",
             },
             {
               name: "categories",

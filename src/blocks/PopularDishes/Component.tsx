@@ -80,7 +80,7 @@ export const PopularDishesBlock = (props: PopularDishes) => {
           {/* Left Side - Title */}
           <div className="mb-8 lg:mb-0">
             <h3
-              className="font-script mb-2 text-2xl text-primary"
+              className="font-script text-primary mb-2 text-2xl"
               style={{ fontFamily: "Brush Script MT, cursive" }}
             >
               {heading?.subtitle}
@@ -151,17 +151,10 @@ export const PopularDishesBlock = (props: PopularDishes) => {
                           >
                             {visibleCards[dishId] && (
                               <div className="translate-y-0 transform text-center text-white transition-all duration-300">
-                                <h3
-                                  className="font-script mb-4 text-3xl"
-                                  style={{
-                                    fontFamily: "Brush Script MT, cursive",
-                                  }}
-                                >
-                                  {dish.title}
-                                </h3>
+                                <h3 className="font-tangerine mb-4 text-3xl">{dish.title}</h3>
                                 <Button
-                                  className="rounded-none bg-primary px-8 py-2 font-medium tracking-wider text-white hover:bg-secondary"
-                               
+                                  className="bg-primary hover:bg-secondary rounded-none px-8 py-2 font-medium tracking-wider text-white"
+
                                   // onClick={() => handleOrderClick(dish)}
                                 >
                                   Order Now

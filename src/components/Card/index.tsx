@@ -6,15 +6,15 @@ import { Media } from "@/components/Media";
 import { cn } from "@/utilities/cn";
 import { useClickableCard } from "@/utilities/useClickableCard";
 
-import type { Post } from "@/payload-types";
+import type { Blog } from "@/payload-types";
 
-export type CardPostData = Pick<Post, "slug" | "categories" | "meta" | "title">;
+export type CardPostData = Pick<Blog, "slug" | "categories" | "meta" | "title">;
 
 export const Card = (props: {
   alignItems?: "center";
   className?: string;
   doc?: CardPostData;
-  relationTo?: "posts";
+  relationTo?: "blogs";
   showCategories?: boolean;
   title?: string;
 }) => {

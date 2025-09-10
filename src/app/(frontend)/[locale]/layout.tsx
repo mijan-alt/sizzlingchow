@@ -3,6 +3,8 @@ import { GeistMono } from "geist/font/mono";
 // eslint-disable-next-line
 import { GeistSans } from "geist/font/sans";
 // import { draftMode } from "next/headers";
+
+import { Raleway, Tangerine } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
@@ -20,6 +22,14 @@ import { mergeOpenGraph } from "@/utilities/mergeOpenGraph";
 import { cn } from "src/utilities/cn";
 
 import type { Metadata } from "next";
+
+const raleway = Raleway({ subsets: ["latin"] });
+
+const tangerine = Tangerine({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-tangerine",
+});
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -45,7 +55,7 @@ export default async function RootLayout({
 
   return (
     <html
-      className={cn(GeistSans.variable, GeistMono.variable, "twp overflow-x-clip lg:overflow-y-scroll")}
+      className={cn(raleway.className, tangerine.variable, "twp overflow-x-clip lg:overflow-y-scroll")}
       lang={locale}
       // data-thmee="light"
       // suppressHydrationWarning

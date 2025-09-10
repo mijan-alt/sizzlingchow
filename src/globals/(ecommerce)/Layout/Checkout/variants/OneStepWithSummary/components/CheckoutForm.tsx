@@ -230,7 +230,7 @@ export const CheckoutForm = ({ user, geowidgetToken }: { user?: Customer; geowid
 
               <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
                 {shippingAddresses ? (
-                  <div className="group ring-main-500 relative flex cursor-pointer rounded-lg border border-gray-300 border-transparent bg-white p-4 shadow-xs ring-2 focus:outline-hidden">
+                  <div className="group ring-primary relative flex cursor-pointer rounded-lg border border-gray-300 border-transparent bg-white p-4 shadow-xs ring-2 focus:outline-hidden">
                     <span className="flex flex-1">
                       <span className="flex w-full flex-col">
                         <span className="block text-sm font-medium text-gray-900">{shipping.name}</span>
@@ -245,7 +245,7 @@ export const CheckoutForm = ({ user, geowidgetToken }: { user?: Customer; geowid
                         <Button
                           type="button"
                           onClick={() => setShippingDialogOpen(true)}
-                          className="text-main-600 mt-1 ml-auto text-sm"
+                          className="text-primary mt-1 ml-auto text-sm"
                         >
                           {t("change")}
                         </Button>
@@ -337,7 +337,7 @@ export const CheckoutForm = ({ user, geowidgetToken }: { user?: Customer; geowid
                           <FormControl>
                             <Select onValueChange={field.onChange} defaultValue={field.value ?? "pl"}>
                               <FormControl>
-                                <SelectTrigger className="focus:outline-main-600 w-full appearance-none rounded-md bg-white py-2 pr-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 outline-solid focus:ring-0 focus:ring-offset-0 focus:outline-2 focus:-outline-offset-2 focus:outline-solid sm:text-sm/6">
+                                <SelectTrigger className="focus:outline-secondary w-full appearance-none rounded-md bg-white py-2 pr-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 outline-solid focus:ring-0 focus:ring-offset-0 focus:outline-2 focus:-outline-offset-2 focus:outline-solid sm:text-sm/6">
                                   <SelectValue placeholder={t("country-placeholder")} />
                                 </SelectTrigger>
                               </FormControl>

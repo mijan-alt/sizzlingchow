@@ -27,7 +27,7 @@ export const CustomCta: Block = {
       required: true,
     },
     link({
-      appearances: false, // enables inline, button, etc
+      appearances: false, 
     }),
   ],
 };

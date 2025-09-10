@@ -1,11 +1,8 @@
 "use client";
-
-import { ChevronRight } from "lucide-react";
 import React from "react";
 
 import { CMSLink } from "@/components/Link";
 import { Media } from "@/components/Media";
-import { Button } from "@/components/ui/button";
 
 import type { CustomCta } from "@/payload-types";
 
@@ -20,18 +17,17 @@ export const CustomCtaBlock = ({ heading, subheading, backgroundImage, link }: C
             className="h-full w-full"
             imgClassName="h-full w-full object-cover object-bottom"
           />
-
           {/* Overlay */}
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-6 bg-black/30 p-6 text-center">
-            {subheading && <h3 className="text-lg font-medium text-primary md:text-xl">{subheading}</h3>}
+            {subheading && <h3 className="text-primary text-lg font-medium md:text-xl">{subheading}</h3>}
             <h2 className="text-2xl font-semibold text-white md:text-4xl">{heading}</h2>
-
             {link && (
-              <CMSLink {...link}  className="h-10 rounded-md px-6 text-sm font-medium">
-                <Button className="h-10 rounded-md px-6 text-sm font-medium">
-                  <ChevronRight className="ml-2 h-4 w-4" />
-                </Button>
-              </CMSLink>
+              <CMSLink
+                {...link}
+                appearance="default" // or "secondary", "outline", "ghost", etc.
+                size="default" // or "sm", "lg", etc.
+                className="bg-primary hover:bg-secondary rounded-none px-6 py-2 font-medium tracking-wider text-white transition-all duration-300"
+              />
             )}
           </div>
         </div>

@@ -4,17 +4,17 @@ import { Card, type CardPostData } from "@/components/Card";
 import { cn } from "src/utilities/cn";
 
 export type Props = {
-  posts: CardPostData[];
+  blogs: CardPostData[];
 };
 
 export const CollectionArchive = (props: Props) => {
-  const { posts } = props;
+  const { blogs } = props;
 
   return (
     <div className={cn("container")}>
       <div>
         <div className="grid grid-cols-4 gap-x-4 gap-y-4 sm:grid-cols-8 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-8 xl:gap-x-8">
-          {posts?.map((result, index) => {
+          {blogs?.map((result, index) => {
             if (typeof result === "object" && result !== null) {
               return (
                 <div className="col-span-4" key={index}>

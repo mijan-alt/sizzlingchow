@@ -14,13 +14,13 @@ import config from "@payload-config";
 
 import PageClient from "./page.client";
 
-import type { Post } from "@/payload-types";
+
 import type { Metadata } from "next";
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config });
-  const posts = await payload.find({
-    collection: "posts",
+  const blogs= await payload.find({
+    collection: "blogs",
     draft: false,
     limit: 1000,
     overrideAccess: false,
@@ -31,7 +31,7 @@ export async function generateStaticParams() {
   });
 
   const params = routing.locales.flatMap((locale) => {
-    return posts.docs.map(({ slug }) => {
+    return blogs.docs.map(({ slug }) => {
       return { locale, slug };
     });
   });
@@ -49,10 +49,10 @@ type Args = {
 export default async function Post({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode();
   const { slug = "", locale } = await paramsPromise;
-  const url = "/posts/" + slug;
-  const post = await queryPostBySlug({ slug, locale });
+  const url = "/blogs/" + slug;
+  const blog = await queryPostBySlug({ slug, locale });
 
-  if (!post) return <PayloadRedirects locale={locale} url={url} />;
+  if (!blog) return <PayloadRedirects locale={locale} url={url} />;
 
   return (
     <article className="pb-16 pt-16">
@@ -63,15 +63,15 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
-      <PostHero post={post} />
+      <PostHero post={blog} />
 
       <div className="flex flex-col items-center gap-4 pt-8">
         <div className="container">
-          <RichText className="mx-auto max-w-3xl" data={post.content} enableGutter={false} />
-          {post.relatedPosts && post.relatedPosts.length > 0 && (
+          <RichText className="mx-auto max-w-3xl" data={blog.content} enableGutter={false} />
+          {blog.relatedPosts && blog.relatedPosts.length > 0 && (
             <RelatedPosts
               className="col-span-3 col-start-1 mt-12 max-w-208 grid-rows-[2fr] lg:grid lg:grid-cols-subgrid"
-              docs={post.relatedPosts.filter((post) => typeof post === "object")}
+              docs={blog.relatedPosts.filter((blog) => typeof blog === "object")}
             />
           )}
         </div>
@@ -93,7 +93,7 @@ const queryPostBySlug = cache(async ({ slug, locale }: { slug: string; locale: L
   const payload = await getPayload({ config });
 
   const result = await payload.find({
-    collection: "posts",
+    collection: "blogs",
     draft,
     limit: 1,
     overrideAccess: draft,

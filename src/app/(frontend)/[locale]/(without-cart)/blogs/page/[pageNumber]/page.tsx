@@ -29,8 +29,8 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   if (!Number.isInteger(sanitizedPageNumber)) notFound();
 
-  const posts = await payload.find({
-    collection: "posts",
+  const blogs = await payload.find({
+    collection: "blogs",
     depth: 1,
     limit: 12,
     locale,
@@ -43,19 +43,19 @@ export default async function Page({ params: paramsPromise }: Args) {
       <PageClient />
       <div className="container mb-16">
         <div className="prose dark:prose-invert max-w-none">
-          <h1>Posts</h1>
+          <h1>Blogs</h1>
         </div>
       </div>
 
       <div className="container mb-8">
-        <PageRange collection="posts" currentPage={posts.page} limit={12} totalDocs={posts.totalDocs} />
+        <PageRange collection="blogs" currentPage={blogs.page} limit={12} totalDocs={blogs.totalDocs} />
       </div>
 
-      <CollectionArchive posts={posts.docs} />
+      <CollectionArchive blogs={blogs.docs} />
 
       <div className="container">
-        {posts?.page && posts?.totalPages > 1 && (
-          <Pagination page={posts.page} totalPages={posts.totalPages} />
+        {blogs?.page && blogs?.totalPages > 1 && (
+          <Pagination page={blogs.page} totalPages={blogs.totalPages} />
         )}
       </div>
     </div>

@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import type { SeasonalMenu } from "@/payload-types";
 
 export const SeasonalMenuBlock = (props: SeasonalMenu) => {
-  const { heading, subheading, description, ctaText, menuItems } = props;
+  const { subheading, description, ctaText, menuItems } = props;
   const [visibleCards, setVisibleCards] = useState<Record<number, boolean>>({});
   const cardRefs = useRef<Record<number, HTMLDivElement | null>>({});
 
@@ -45,8 +45,8 @@ export const SeasonalMenuBlock = (props: SeasonalMenu) => {
         <div className="flex flex-col lg:flex-row">
           {/* Left Content */}
           <div className="mb-8 lg:mb-0 lg:w-1/3 lg:pr-8">
-            {subheading && <h3 className="font-script text-primary mb-2 text-2xl">{subheading}</h3>}
-            <h2 className="mb-6 text-4xl leading-tight font-bold lg:text-5xl">{heading}</h2>
+            {subheading && <p className="text-primary font-tangerine mb-2 text-5xl">Mouth Watering</p>}
+            <h2 className="mb-6 text-4xl leading-tight font-bold lg:text-5xl">Seasonal Menus</h2>
             {description && <p className="mb-6 text-lg leading-relaxed">{description}</p>}
             {ctaText && (
               <Button className="bg-primary hover:bg-secondary text-primary-foreground rounded-none px-8 py-3 font-medium tracking-wider transition-all duration-300">

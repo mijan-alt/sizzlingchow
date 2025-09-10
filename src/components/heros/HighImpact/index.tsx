@@ -30,16 +30,16 @@ export const HighImpactHero = () => {
     {
       id: 1,
       image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
-      title: "Build Your Dream Home with us",
+      title: "Tasty and Bity Healthy foods",
       description: "More than homes — we build dreams.",
       buttonText: "Try it for free",
     },
     {
       id: 2,
       image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&fit=crop",
-      title: "Smart Homes",
-      description: "Intelligent living spaces for the future",
-      buttonText: "Try it for free",
+      title: "S",
+      description: "Healthy Hot and Spicy Foods",
+      buttonText: "Buy now",
     },
     {
       id: 3,
