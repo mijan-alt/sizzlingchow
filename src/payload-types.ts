@@ -1217,6 +1217,10 @@ export interface PopularDishes {
   backgroundImage: string | Media;
   dishes?:
     | {
+        /**
+         * Products order will be the same as the order of selection
+         */
+        products?: (string | Product)[] | null;
         image: string | Media;
         title: string;
         isSpecial?: boolean | null;
@@ -2141,6 +2145,7 @@ export interface PopularDishesSelect<T extends boolean = true> {
   dishes?:
     | T
     | {
+        products?: T;
         image?: T;
         title?: T;
         isSpecial?: T;

@@ -53,6 +53,22 @@ export const PopularDishes: Block = {
       maxRows: 10,
       fields: [
         {
+          name: "products",
+          type: "relationship",
+          relationTo: "products",
+          hasMany: true,
+          access: {
+            read: () => true,
+          },
+          admin: {
+            condition: (_, siblingData) => siblingData.type === "manual",
+            description: {
+              pl: "Kolejność produktów będzie taka jak w kolejności wybrania",
+              en: "Products order will be the same as the order of selection",
+            },
+          },
+        },
+        {
           name: "image",
           type: "upload",
           relationTo: "media",
