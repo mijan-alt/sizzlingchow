@@ -34,7 +34,7 @@ export const navIconMap: Partial<Record<CollectionSlug | GlobalSlug, ExoticCompo
   search: Search,
   administrators: ShieldUserIcon,
   pages: LayoutTemplate,
-  posts: RssIcon,
+  blogs: RssIcon,
   media: FileImageIcon,
   categories: TagIcon,
   header: Menu,
