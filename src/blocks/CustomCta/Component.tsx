@@ -23,7 +23,7 @@ export const CustomCtaBlock = ({ heading, subheading, backgroundImage, link }: C
 
           {/* Overlay */}
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-6 bg-black/30 p-6 text-center">
-            {subheading && <h3 className="text-lg font-medium text-orange-200 md:text-xl">{subheading}</h3>}
+            {subheading && <h3 className="text-lg font-medium text-primary md:text-xl">{subheading}</h3>}
             <h2 className="text-2xl font-semibold text-white md:text-4xl">{heading}</h2>
 
             {link && (

@@ -80,7 +80,7 @@ export const PopularDishesBlock = (props: PopularDishes) => {
           {/* Left Side - Title */}
           <div className="mb-8 lg:mb-0">
             <h3
-              className="font-script mb-2 text-2xl text-orange-400"
+              className="font-script mb-2 text-2xl text-primary"
               style={{ fontFamily: "Brush Script MT, cursive" }}
             >
               {heading?.subtitle}
@@ -160,8 +160,8 @@ export const PopularDishesBlock = (props: PopularDishes) => {
                                   {dish.title}
                                 </h3>
                                 <Button
-                                  className="rounded-none bg-orange-400 px-8 py-2 font-medium tracking-wider text-white hover:bg-orange-500"
-                                  style={{ backgroundColor: "#D4A574" }}
+                                  className="rounded-none bg-primary px-8 py-2 font-medium tracking-wider text-white hover:bg-secondary"
+                               
                                   // onClick={() => handleOrderClick(dish)}
                                 >
                                   Order Now
