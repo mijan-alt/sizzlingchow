@@ -11,14 +11,14 @@ import { type Plugin } from "payload";
 import { beforeSyncWithSearch } from "@/components/search/beforeSync";
 import { searchFields } from "@/components/search/fieldOverrides";
 import { revalidateRedirects } from "@/hooks/revalidateRedirects";
-import { type Page, type Post } from "@/payload-types";
+import { type Page, type Blog } from "@/payload-types";
 import { getServerSideURL } from "@/utilities/getURL";
 
-const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
+const generateTitle: GenerateTitle<Blog | Page> = ({ doc }) => {
   return doc?.title ? `${doc.title} | Payload Ecommerce Template` : "Payload Ecommerce Template";
 };
 
-const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
+const generateURL: GenerateURL<Blog | Page> = ({ doc }) => {
   const url = getServerSideURL();
 
   return doc?.slug ? `${url}/${doc.slug}` : url;
