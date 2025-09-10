@@ -1,7 +1,7 @@
 import { getServerSideURL } from "./getURL";
 import { mergeOpenGraph } from "./mergeOpenGraph";
 
-import type { Media, Page, Post, Config } from "@/payload-types";
+import type { Media, Page, Blog, Config } from "@/payload-types";
 import type { Metadata } from "next";
 
 const getImageURL = (image?: Media | Config["db"]["defaultIDType"] | null) => {
@@ -18,14 +18,14 @@ const getImageURL = (image?: Media | Config["db"]["defaultIDType"] | null) => {
   return url;
 };
 
-export const generateMeta = async (args: { doc: Partial<Page> | Partial<Post> }): Promise<Metadata> => {
+export const generateMeta = async (args: { doc: Partial<Page> | Partial<Blog> }): Promise<Metadata> => {
   const { doc } = args || {};
 
   const ogImage = getImageURL(doc?.meta?.image);
 
   const title = doc?.meta?.title
-    ? doc?.meta?.title + " | Payload Ecommerce Template"
-    : "Payload Ecommerce Template";
+    ? doc?.meta?.title + " | Sizzling Chow"
+    : "Sizzling Chow";
 
   return {
     description: doc?.meta?.description,

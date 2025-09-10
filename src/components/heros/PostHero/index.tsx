@@ -4,9 +4,9 @@ import { Media } from "@/components/Media";
 import { formatAuthors } from "@/utilities/formatAuthors";
 import { formatDateTime } from "src/utilities/formatDateTime";
 
-import type { Post } from "@/payload-types";
+import type { Blog } from "@/payload-types";
 
-export const PostHero = ({ post }: { post: Post }) => {
+export const PostHero = ({ post }: { post: Blog}) => {
   const { categories, heroImage, populatedAuthors, publishedAt, title } = post;
 
   const hasAuthors =

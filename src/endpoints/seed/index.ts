@@ -10,7 +10,7 @@ const collections: CollectionSlug[] = [
   "orders",
   "media",
   "pages",
-  "posts",
+  "blogs",
   "forms",
   "form-submissions",
   "search",

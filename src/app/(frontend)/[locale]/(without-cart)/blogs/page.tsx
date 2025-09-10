@@ -38,7 +38,7 @@ export default async function Page() {
       <PageClient />
       <div className="container mb-16">
         <div className="prose max-w-none dark:prose-invert">
-          <h1>Posts</h1>
+          <h1>Blogs</h1>
         </div>
       </div>
 

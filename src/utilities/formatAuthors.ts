@@ -1,4 +1,4 @@
-import { type Post } from "@/payload-types";
+import { type Blog } from "@/payload-types";
 
 /**
  * Formats an array of populatedAuthors from  into a prettified string.
@@ -10,7 +10,7 @@ import { type Post } from "@/payload-types";
  * [Author1, Author2, Author3] becomes 'Author1, Author2, and Author3'
  *
  */
-export const formatAuthors = (authors: NonNullable<NonNullable<Post["populatedAuthors"]>[number]>[]) => {
+export const formatAuthors = (authors: NonNullable<NonNullable<Blog["populatedAuthors"]>[number]>[]) => {
   // Ensure we don't have any authors without a name
   const filteredAuthors = authors.filter((author) => Boolean(author.name));
 
