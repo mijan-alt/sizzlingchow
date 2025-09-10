@@ -4,11 +4,11 @@ import { cn } from "@/utilities/cn";
 
 import { Card } from "../../components/Card";
 
-import type { Post } from "@/payload-types";
+import type { Blog } from "@/payload-types";
 
 export type RelatedPostsProps = {
   className?: string;
-  docs?: Post[];
+  docs?: Blog[];
   introContent?: any;
 };
 
@@ -23,7 +23,7 @@ export const RelatedPosts = (props: RelatedPostsProps) => {
         {docs?.map((doc, index) => {
           if (typeof doc === "string") return null;
 
-          return <Card key={index} doc={doc} relationTo="posts" showCategories />;
+          return <Card key={index} doc={doc} relationTo="blogs" showCategories />;
         })}
       </div>
     </div>
