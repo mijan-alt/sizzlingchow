@@ -23,7 +23,12 @@ import { cn } from "src/utilities/cn";
 
 import type { Metadata } from "next";
 
-const raleway = Raleway({ subsets: ["latin"] });
+const raleway = Raleway({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-raleway",
+  weight: ["400", "500", "600", "700"],
+});
 
 const tangerine = Tangerine({
   subsets: ["latin"],

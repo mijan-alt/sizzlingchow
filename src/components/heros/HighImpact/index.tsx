@@ -29,31 +29,31 @@ export const HighImpactHero = () => {
   const slides: Slide[] = [
     {
       id: 1,
-      image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
+      image: "/assets/chef1.jpg",
       title: "Tasty and Bity Healthy foods",
-      description: "More than homes — we build dreams.",
-      buttonText: "Try it for free",
+      description: "Crafted to nourish your body while delighting your taste buds..",
+      buttonText: "Explore",
     },
     {
       id: 2,
-      image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&fit=crop",
-      title: "S",
-      description: "Healthy Hot and Spicy Foods",
-      buttonText: "Buy now",
+      image: "/assets/chef2.jpg",
+      title: "Spicy Dinner",
+      description: "Served hot with bold flavors that ignite your senses.",
+      buttonText: "Explore",
     },
     {
       id: 3,
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop",
-      title: "Eco Friendly",
-      description: "Sustainable and environmentally conscious homes",
-      buttonText: "Try it for free",
+      image: "/assets/chef4.jpg",
+      title: "Eco-Friendly Cooking",
+      description: "Using fresh, sustainable ingredients straight from nature.",
+      buttonText: "Explore",
     },
     {
       id: 4,
-      image: "https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=800&h=600&fit=crop",
-      title: "Custom Builds",
-      description: "Tailored solutions for your unique vision",
-      buttonText: "Try it for free",
+      image: "/assets/chef1.jpg",
+      title: "Custom Menus",
+      description: "Designed to match your unique taste and lifestyle.",
+      buttonText: "Explore",
     },
   ];
   useEffect(() => {
@@ -102,7 +102,6 @@ export const HighImpactHero = () => {
     };
   }, [api]);
 
-  // Manual dot navigation
   // const goToSlide = (index: number) => {
   //   if (api) {
   //     api.scrollTo(index);
@@ -110,36 +109,34 @@ export const HighImpactHero = () => {
   // };
 
   return (
-    <section className="mx-auto w-full">
+    <section className="relative mx-auto w-full">
       <Carousel
         className="w-full"
         setApi={setApi}
         opts={{
-          align: "start",
+          align: "center",
           loop: true,
           dragFree: false,
         }}
       >
-        <CarouselContent className="-ml-4">
+        <CarouselContent className="">
           {slides.map((slide) => (
-            <CarouselItem key={slide.id} className="basis-full pl-4 md:basis-[91%]">
-              <div className="p-1">
+            <CarouselItem key={slide.id} className="basis-full pl-4 md:basis-[100%]">
+              <div className="">
                 <div className="bg-muted relative flex h-96 flex-col items-end justify-between overflow-hidden rounded-lg p-8 md:h-[600px]">
                   {/* Background Image */}
                   <div className="pointer-events-none absolute top-0 left-0 h-full w-full">
                     <img src={slide.image} alt={slide.title} className="h-full w-full object-cover" />
                     {/* Dark overlay for better text readability */}
-                    <div className="absolute inset-0 bg-black/30" />
+                    <div className="absolute inset-0 bg-black/50" />
                   </div>
 
                   {/* Content */}
-                  <div className="z-10 mt-16 text-white md:mt-42">
-                    <h1 className="max-w-lg text-right text-3xl leading-tight font-medium tracking-tight md:text-6xl">
+                  <div className="align-start z-10 mt-16 text-white md:mt-42">
+                    <h1 className="font-tangerine text-primary max-w-lg text-start text-3xl leading-tight font-medium md:text-6xl">
                       {slide.title}
                     </h1>
-                    <p className="my-4 max-w-lg text-right text-base md:my-6 md:text-lg">
-                      {slide.description}
-                    </p>
+                    <p className="text-bold my-4 max-w-lg text-start text-3xl">{slide.description}</p>
                   </div>
 
                   {/* Button */}
@@ -158,20 +155,19 @@ export const HighImpactHero = () => {
           ))}
         </CarouselContent>
       </Carousel>
-
-      {/* Navigation Dots */}
-      <div className="mt-6 flex justify-center gap-2">
+      <div className="absolute bottom-4 z-10 mt-6 flex justify-center gap-2">
         {slides.map((_, index) => (
           <button
             key={index}
             className={`h-2 w-2 rounded-full transition-all duration-300 ${
-              current === index ? "w-6 bg-gray-800" : "bg-gray-400 hover:bg-gray-600"
+              current === index ? "bg-primary w-6" : "hover:bg-primary bg-gray-400"
             }`}
             onClick={() => api?.scrollTo(index)}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
+      {/* Navigation Dots */}
     </section>
   );
 };

@@ -35,7 +35,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         tangerine: ["var(--font-tangerine)"],
-        raleway: ["Raleway", "sans-serif"], // Your main font
+        raleway: ["Raleway", "sans-serif"], 
       },
       transitionProperty: {
         transformColors: "transform, background, color, background-color",
