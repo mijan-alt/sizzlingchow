@@ -9,7 +9,7 @@ import type { CustomCta } from "@/payload-types";
 export const CustomCtaBlock = ({ heading, subheading, backgroundImage, link }: CustomCta) => {
   return (
     <section className="">
-      <div className="container mx-auto">
+      <div className="">
         <div className="relative h-[300px] overflow-hidden md:h-[500px]">
           {/* Background Image */}
           <Media

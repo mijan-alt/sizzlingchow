@@ -13,6 +13,7 @@ import { Accordion } from "@/blocks/Accordion/config";
 import { Archive } from "@/blocks/ArchiveBlock/config";
 import { CallToAction } from "@/blocks/CallToAction/config";
 import { Carousel } from "@/blocks/Carousel/config";
+import { ContactUsBlock } from "@/blocks/ContactUs/config";
 import { Content } from "@/blocks/Content/config";
 import { CustomCta } from "@/blocks/CustomCta/config";
 import { FormBlock } from "@/blocks/Form/config";
@@ -105,7 +106,8 @@ export const Pages: CollectionConfig<"pages"> = {
                 Hotspot,
                 PopularDishes,
                 SeasonalMenus,
-                CustomCta
+                CustomCta,
+                ContactUsBlock,
               ],
               required: true,
               admin: {

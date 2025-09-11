@@ -127,16 +127,12 @@ export const SeasonalMenuBlock = (props: SeasonalMenu) => {
                     {visibleCards[i] && (
                       <div className="text-center text-white">
                         <h3 className="font-script mb-3 text-xl">{item.title}</h3>
-                        {item.link ? (
-                          <CMSLink {...item.link}>
-                            <Button className="bg-primary hover:bg-secondary rounded-none px-5 py-2 text-sm text-white">
-                              {item.buttonText ?? "Order Now"}
-                            </Button>
-                          </CMSLink>
-                        ) : (
-                          <Button className="bg-primary hover:bg-secondary rounded-none px-5 py-2 text-sm text-white">
-                            {item.buttonText ?? "Order Now"}
-                          </Button>
+                        {item.link && (
+                          <CMSLink
+                            {...item.link}
+                            appearance="default"
+                            className="bg-primary hover:bg-secondary rounded-none px-5 py-2 text-sm text-white"
+                          />
                         )}
                       </div>
                     )}

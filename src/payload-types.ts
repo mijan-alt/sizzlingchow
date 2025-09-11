@@ -266,6 +266,7 @@ export interface Page {
     | PopularDishes
     | SeasonalMenu
     | CustomCta
+    | ContactUs
   )[];
   meta?: {
     title?: string | null;
@@ -1298,6 +1299,29 @@ export interface CustomCta {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contactUs".
+ */
+export interface ContactUs {
+  title?: string | null;
+  description?: string | null;
+  emailLabel?: string | null;
+  email?: string | null;
+  emailDescription?: string | null;
+  officeLabel?: string | null;
+  officeAddress?: string | null;
+  officeDescription?: string | null;
+  phoneLabel?: string | null;
+  phone?: string | null;
+  phoneDescription?: string | null;
+  chatLabel?: string | null;
+  chatLink?: string | null;
+  chatDescription?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contactUs';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "customers".
  */
 export interface Customer {
@@ -1933,6 +1957,7 @@ export interface PagesSelect<T extends boolean = true> {
         popularDishes?: T | PopularDishesSelect<T>;
         seasonalMenu?: T | SeasonalMenuSelect<T>;
         customCta?: T | CustomCtaSelect<T>;
+        contactUs?: T | ContactUsSelect<T>;
       };
   meta?:
     | T
@@ -2201,6 +2226,28 @@ export interface CustomCtaSelect<T extends boolean = true> {
         url?: T;
         label?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contactUs_select".
+ */
+export interface ContactUsSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  emailLabel?: T;
+  email?: T;
+  emailDescription?: T;
+  officeLabel?: T;
+  officeAddress?: T;
+  officeDescription?: T;
+  phoneLabel?: T;
+  phone?: T;
+  phoneDescription?: T;
+  chatLabel?: T;
+  chatLink?: T;
+  chatDescription?: T;
   id?: T;
   blockName?: T;
 }

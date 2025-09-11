@@ -7,9 +7,11 @@ import { MediaBlock } from "@/blocks/MediaBlock/Component";
 import { HotspotBlock } from "./(ecommerce)/Hotspot/Component";
 import { AccordionBlock } from "./Accordion/Component";
 import { CarouselBlock } from "./Carousel/Component";
+import { ContactUs } from "./ContactUs/Component";
 import { CustomCtaBlock } from "./CustomCta/Component";
 import { PopularDishesBlock } from "./PopularDishes/Component";
 import { SeasonalMenuBlock } from "./SeasonalMenu/Component";
+
 
 import type { Page } from "@/payload-types";
 
@@ -26,6 +28,7 @@ const blockComponents = {
   popularDishes: PopularDishesBlock,
   seasonalMenu: SeasonalMenuBlock,
   customCta: CustomCtaBlock,
+  contactUs: ContactUs
 };
 
 export const RenderBlocks = ({ blocks }: { blocks: Page["layout"][0][] }) => {

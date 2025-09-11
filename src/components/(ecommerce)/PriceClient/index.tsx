@@ -14,7 +14,7 @@ export const PriceClient = ({
 }) => {
   const { currency } = useCurrency();
   const locale = useLocale();
-  console.log("pricing in price client:", pricing)
+
   const price =
     pricing.length > 0
       ? (pricing.find((price) => price.currency === currency)?.value ?? pricing[0].value)
