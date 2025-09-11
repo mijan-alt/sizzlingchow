@@ -23,6 +23,8 @@ const OrdersPage = async ({ params }: { params: Promise<{ locale: Locale; id: st
   const t = await getTranslations("Order");
   const c = await getTranslations("CheckoutForm.countries");
 
+  console.log("your order", order);
+
   const filledProducts = await getOrderProducts(order.products, locale);
 
   const courier =
@@ -32,7 +34,7 @@ const OrdersPage = async ({ params }: { params: Promise<{ locale: Locale; id: st
     <div className="bg-white">
       <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <div className="max-w-xl">
-          <h1 className="text-base font-medium text-indigo-600">{t("thank-you")}</h1>
+          <h1 className="text-primary text-base font-medium">{t("thank-you")}</h1>
           <p className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
             {t(`${order.orderDetails.status}.title`)}
           </p>
@@ -43,7 +45,7 @@ const OrdersPage = async ({ params }: { params: Promise<{ locale: Locale; id: st
           {order.orderDetails.trackingNumber && (
             <dl className="mt-12 text-sm font-medium">
               <dt className="text-gray-900">{t("tracking-number")}</dt>
-              <dd className="mt-2 text-indigo-600">{order.orderDetails.trackingNumber}</dd>
+              <dd className="text-primary mt-2">{order.orderDetails.trackingNumber}</dd>
             </dl>
           )}
         </div>

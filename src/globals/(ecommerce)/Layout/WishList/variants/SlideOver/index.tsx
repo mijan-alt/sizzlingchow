@@ -162,7 +162,7 @@ export const SlideOver = () => {
                                   onClick={() => {
                                     removeFromWishList(product.id, product.variant?.slug ?? undefined);
                                   }}
-                                  className="font-medium text-main-600 hover:text-main-500"
+                                  className="font-medium text-primary hover:text-secondary"
                                 >
                                   {t("remove")}
                                 </button>

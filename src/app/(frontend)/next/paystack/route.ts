@@ -67,7 +67,7 @@ export async function POST(req: Request) {
       case "charge.success": {
         const chargeData = event.data;
         const orderID = chargeData.metadata?.order_id ?? chargeData.reference.split("-")[0];
-
+          console.log("order Id", orderID)
         if (chargeData.status === "success") {
           void payload.update({
             collection: "orders",
@@ -80,6 +80,8 @@ export async function POST(req: Request) {
               },
             },
           });
+
+          console.log("order updated")
         }
 
         break;

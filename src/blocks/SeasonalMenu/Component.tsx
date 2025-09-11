@@ -40,7 +40,7 @@ export const SeasonalMenuBlock = (props: SeasonalMenu) => {
   }, []);
 
   return (
-    <section className="w-full bg-gradient-to-br py-16">
+    <section className="bg-muted w-full py-16">
       <div className="mx-auto max-w-7xl px-4">
         <div className="flex flex-col lg:flex-row">
           {/* Left Content */}

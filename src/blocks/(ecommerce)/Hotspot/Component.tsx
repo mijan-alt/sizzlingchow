@@ -7,7 +7,7 @@ import {
   spacingBottomClasses,
   spacingTopClasses,
 } from "@/blocks/globals";
-import RichText from "@/components/RichText";
+// import RichText from "@/components/RichText";
 import { WithInlinePrice } from "@/globals/(ecommerce)/Layout/ProductList/variants/listings/WithInlinePrice";
 import { type HotspotBlock as HotspotBlockProps, type Product } from "@/payload-types";
 import { cn } from "@/utilities/cn";
@@ -25,7 +25,6 @@ export const HotspotBlock = async ({
   spacingBottom,
   spacingTop,
   subcategory,
-  title,
   sort,
   products,
 }: HotspotBlockProps) => {
@@ -101,7 +100,11 @@ export const HotspotBlock = async ({
         paddingBottomClasses[paddingBottom ?? "medium"],
       )}
     >
-      {title && <RichText data={title} className="mb-6" />}
+      <div className="mb-6">
+        <p className="font-tangerine text-primary text-center text-4xl font-bold">Yummy and Delicious</p>
+        <h1 className="text-bold text-center text-2xl">Sizzling Chow Menu</h1>
+      </div>
+      {/* {title && <RichText data={title} className="mb-6" />} */}
       {HotspotComponent}
     </section>
   );

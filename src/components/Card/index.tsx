@@ -32,12 +32,12 @@ export const Card = (props: {
   return (
     <article
       className={cn(
-        "overflow-hidden rounded-lg border border-border bg-card hover:cursor-pointer",
+        "border-border bg-muted overflow-hidden rounded-2xl border hover:cursor-pointer",
         className,
       )}
       ref={card.ref}
     >
-      <div className="relative w-full">
+      <div className="relative w-full rounded-md">
         {!metaImage && <div className="">No image</div>}
         {metaImage && typeof metaImage !== "string" && <Media resource={metaImage} size="33vw" />}
       </div>

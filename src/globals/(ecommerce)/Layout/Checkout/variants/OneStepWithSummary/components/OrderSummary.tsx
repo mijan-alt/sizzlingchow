@@ -1,4 +1,3 @@
-
 //OrderSummary.tsx
 import { TrashIcon } from "@heroicons/react/20/solid";
 import { useTranslations } from "next-intl";
@@ -201,7 +200,7 @@ export const OrderSummary = ({
         <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
           <button
             type="submit"
-            className="w-full rounded-md border border-transparent bg-main-600 px-4 py-3 text-base font-medium text-white shadow-xs hover:bg-main-700 focus:outline-hidden focus:ring-2 focus:ring-main-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+            className="bg-primary hover:bg-secondary focus:ring-primary w-full rounded-md border border-transparent px-4 py-3 text-base font-medium text-white shadow-xs focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-hidden"
           >
             {t("confirm")}
           </button>

@@ -216,9 +216,9 @@ export const CheckoutForm = ({ user, geowidgetToken }: { user?: Customer; geowid
                           <TabsTrigger className="w-1/2" value="individual">
                             {t("individual")}
                           </TabsTrigger>
-                          <TabsTrigger className="w-1/2" value="company">
+                          {/* <TabsTrigger className="w-1/2" value="company">
                             {t("company")}
-                          </TabsTrigger>
+                          </TabsTrigger> */}
                         </TabsList>
                       </Tabs>
                     </FormControl>
@@ -403,11 +403,11 @@ export const CheckoutForm = ({ user, geowidgetToken }: { user?: Customer; geowid
                           value={deliveryMethod.slug}
                           aria-label={deliveryMethod.title}
                           aria-description={`${deliveryMethod.turnaround} for price`}
-                          className="group data-focus:ring-main-500 relative flex cursor-pointer items-center rounded-lg border border-gray-300 bg-white p-4 shadow-xs focus:outline-hidden data-checked:border-transparent data-focus:ring-2"
+                          className="group data-focus:ring-primary relative flex cursor-pointer items-center rounded-lg border border-gray-300 bg-white p-4 shadow-xs focus:outline-hidden data-checked:border-transparent data-focus:ring-2"
                         >
                           <span
                             aria-hidden="true"
-                            className="group-data-checked:border-main-500 pointer-events-none absolute -inset-px rounded-lg border-2 border-transparent group-data-focus:border"
+                            className="group-data-checked:border-primary pointer-events-none absolute -inset-px rounded-lg border-2 border-transparent group-data-focus:border"
                           />
 
                           <DeliveryMethod geowidgetToken={geowidgetToken} deliveryMethod={deliveryMethod} />

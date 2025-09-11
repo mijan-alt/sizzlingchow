@@ -91,7 +91,7 @@ export const OrdersData = ({
               key={shipping.id}
               className={cn(
                 "group relative flex cursor-pointer rounded-lg border border-gray-300 border-transparent bg-white p-4 shadow-xs ring-2 ring-gray-200 focus:outline-hidden",
-                shipping.id === selectedShipping?.id && "ring-main-500",
+                shipping.id === selectedShipping?.id && "ring-primary",
               )}
             >
               <span className="flex flex-1">

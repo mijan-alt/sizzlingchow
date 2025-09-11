@@ -15,12 +15,12 @@ export const CustomCtaBlock = ({ heading, subheading, backgroundImage, link }: C
           <Media
             resource={backgroundImage}
             className="h-full w-full"
-            imgClassName="h-full w-full object-cover object-bottom"
+            imgClassName="h-full w-full object-cover object-bottom bg-fixed "
           />
           {/* Overlay */}
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-6 bg-black/30 p-6 text-center">
             {subheading && <h3 className="text-primary text-lg font-medium md:text-xl">{subheading}</h3>}
-            <h2 className="text-2xl font-semibold text-white md:text-4xl">{heading}</h2>
+            <h2 className="text-3xl font-bold text-white lg:text-5xl">{heading}</h2>
             {link && (
               <CMSLink
                 {...link}

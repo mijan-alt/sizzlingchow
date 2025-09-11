@@ -1,5 +1,6 @@
 "use client";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -14,6 +15,7 @@ type Slide = {
   title: string;
   description: string;
   buttonText: string;
+  url: string;
 };
 
 export const HighImpactHero = () => {
@@ -33,6 +35,7 @@ export const HighImpactHero = () => {
       title: "Tasty and Bity Healthy foods",
       description: "Crafted to nourish your body while delighting your taste buds..",
       buttonText: "Explore",
+      url: "/category/rice",
     },
     {
       id: 2,
@@ -40,6 +43,7 @@ export const HighImpactHero = () => {
       title: "Spicy Dinner",
       description: "Served hot with bold flavors that ignite your senses.",
       buttonText: "Explore",
+      url: "/category/pasta",
     },
     {
       id: 3,
@@ -47,6 +51,7 @@ export const HighImpactHero = () => {
       title: "Eco-Friendly Cooking",
       description: "Using fresh, sustainable ingredients straight from nature.",
       buttonText: "Explore",
+      url: "/category/rice",
     },
     {
       id: 4,
@@ -54,6 +59,7 @@ export const HighImpactHero = () => {
       title: "Custom Menus",
       description: "Designed to match your unique taste and lifestyle.",
       buttonText: "Explore",
+      url: "/category/pasta",
     },
   ];
   useEffect(() => {
@@ -140,14 +146,17 @@ export const HighImpactHero = () => {
                   </div>
 
                   {/* Button */}
+                  {/* Button */}
                   <div className="z-10 flex w-full justify-end">
-                    <Button
-                      variant="outline"
-                      className="group flex w-fit items-center justify-center gap-2 rounded-full border-white/20 bg-white/10 px-4 py-2 text-sm text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20 hover:text-white md:text-base"
-                    >
-                      {slide.buttonText}
-                      <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
-                    </Button>
+                    <Link href={slide.url}>
+                      <Button
+                        variant="outline"
+                        className="group flex w-fit items-center justify-center gap-2 rounded-full border-white/20 bg-white/10 px-4 py-2 text-sm text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20 hover:text-white md:text-base"
+                      >
+                        {slide.buttonText}
+                        <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
